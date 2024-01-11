@@ -27,6 +27,9 @@ export class SinglyLinkedList {
 // Floyd's Tortoise and Hare Algorithm
 // Time complexity: O(n)
 // It's designed to detect a cycle in a linked list
+// It uses two pointers, one slow and one fast
+// Fast one moves two nodes at a time, slow one moves one node at a time
+// Analogy: two runners running on a track, one faster than the other
 export function hasCycle(list) {
   let slow = list.head
   let fast = list.head
