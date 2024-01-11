@@ -24,16 +24,18 @@ export class SinglyLinkedList {
   }
 }
 
-// Your task: Implement this function
+// Floyd's Tortoise and Hare Algorithm
+// Time complexity: O(n)
+// It's designed to detect a cycle in a linked list
 export function hasCycle(list) {
-  let previous = list.head
-  let current = list.head
+  let slow = list.head
+  let fast = list.head
 
-  while (current && current.next) {
-    previous = previous.next
-    current = current.next.next
+  while (fast && fast.next) {
+    slow = slow.next
+    fast = fast.next.next
 
-    if (previous.value === current.value) {
+    if (slow.value === fast.value) {
       return true
     }
   }
