@@ -42,6 +42,20 @@ export class SinglyLinkedList {
     this.length++
   }
 
+  find(value) {
+    if (this.head === null) return null
+
+    let currentNode = this.head
+
+    while (currentNode !== null) {
+      if (currentNode.value === value) {
+        return currentNode
+      }
+
+      currentNode = currentNode.next
+    }
+  }
+
   insert(index, value) {
     if (this.head === null) return null
     if (index === 0) {
