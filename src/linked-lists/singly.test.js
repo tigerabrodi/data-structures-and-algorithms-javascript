@@ -97,7 +97,7 @@ it('should not find an element that does not exist', () => {
 })
 
 // Test for converting the list to an array
-it.only('should convert the list to an array', () => {
+it('should convert the list to an array', () => {
   const list = new SinglyLinkedList()
   list.append(1)
   list.append(2)
@@ -107,7 +107,7 @@ it.only('should convert the list to an array', () => {
 })
 
 // Test for clearing the list
-it('should clear the list', () => {
+it.only('should clear the list', () => {
   const list = new SinglyLinkedList()
   list.append(1)
   list.append(2)
