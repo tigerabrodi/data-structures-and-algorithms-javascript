@@ -54,6 +54,8 @@ export class SinglyLinkedList {
 
       currentNode = currentNode.next
     }
+
+    return null
   }
 
   insert(index, value) {

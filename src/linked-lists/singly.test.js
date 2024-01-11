@@ -78,7 +78,7 @@ it('should remove an element by index', () => {
 })
 
 // Test for finding an element
-it.only('should find an element in the list', () => {
+it('should find an element in the list', () => {
   const list = new SinglyLinkedList()
   list.append(1)
   list.append(2)
@@ -88,7 +88,7 @@ it.only('should find an element in the list', () => {
 })
 
 // Test for finding an element that does not exist
-it('should not find an element that does not exist', () => {
+it.only('should not find an element that does not exist', () => {
   const list = new SinglyLinkedList()
   list.append(1)
   list.append(2)
