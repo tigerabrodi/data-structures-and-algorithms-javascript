@@ -162,4 +162,10 @@ export class DoublyLinkedList {
 
     return array
   }
+
+  clear() {
+    this.head = null
+    this.tail = null
+    this.length = 0
+  }
 }
