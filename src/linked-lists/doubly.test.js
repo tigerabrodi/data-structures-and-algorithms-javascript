@@ -70,7 +70,7 @@ it('should insert an element at a specific index', () => {
 })
 
 // Test for removing an element by index
-it.only('should remove an element by index', () => {
+it('should remove an element by index', () => {
   const list = new DoublyLinkedList()
   list.append(1)
   list.append(2)
@@ -81,7 +81,7 @@ it.only('should remove an element by index', () => {
 })
 
 // Test for finding an element
-it('should find an element in the list', () => {
+it.only('should find an element in the list', () => {
   const list = new DoublyLinkedList()
   list.append(1)
   list.append(2)

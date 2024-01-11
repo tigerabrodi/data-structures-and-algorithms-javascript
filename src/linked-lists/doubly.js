@@ -131,4 +131,20 @@ export class DoublyLinkedList {
     this.length--
     return removed
   }
+
+  find(value) {
+    if (this.head === null) return null
+
+    let currentNode = this.head
+
+    while (currentNode !== null) {
+      if (currentNode.value === value) {
+        return currentNode
+      }
+
+      currentNode = currentNode.next
+    }
+
+    return null
+  }
 }
