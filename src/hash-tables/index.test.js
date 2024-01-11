@@ -1,7 +1,7 @@
 import { it, expect } from 'vitest'
 import { HashTable } from './index'
 
-it.only('should store and retrieve values', () => {
+it('should store and retrieve values', () => {
   const hashTable = new HashTable(10)
   hashTable.set('key1', 'value1')
   hashTable.set('key2', 'value2')
@@ -10,7 +10,7 @@ it.only('should store and retrieve values', () => {
   expect(hashTable.get('key2')).toBe('value2')
 })
 
-it('should handle collisions', () => {
+it.only('should handle collisions', () => {
   const hashTable = new HashTable(10)
   // These keys should result in the same hash index to test collision handling
   hashTable.set('key1', 'value1')
