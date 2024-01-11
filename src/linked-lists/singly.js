@@ -42,6 +42,21 @@ export class SinglyLinkedList {
     this.length++
   }
 
+  toArray() {
+    if (this.head === null) return []
+
+    const array = []
+
+    let currentNode = this.head
+
+    while (currentNode !== null) {
+      array.push(currentNode.value)
+      currentNode = currentNode.next
+    }
+
+    return array
+  }
+
   find(value) {
     if (this.head === null) return null
 

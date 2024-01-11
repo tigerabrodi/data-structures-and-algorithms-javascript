@@ -88,7 +88,7 @@ it('should find an element in the list', () => {
 })
 
 // Test for finding an element that does not exist
-it.only('should not find an element that does not exist', () => {
+it('should not find an element that does not exist', () => {
   const list = new SinglyLinkedList()
   list.append(1)
   list.append(2)
@@ -97,7 +97,7 @@ it.only('should not find an element that does not exist', () => {
 })
 
 // Test for converting the list to an array
-it('should convert the list to an array', () => {
+it.only('should convert the list to an array', () => {
   const list = new SinglyLinkedList()
   list.append(1)
   list.append(2)
