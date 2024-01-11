@@ -22,7 +22,7 @@ it('should append an element to the list', () => {
 })
 
 // Test for prepending an element
-it.only('should prepend an element to the list', () => {
+it('should prepend an element to the list', () => {
   const list = new SinglyLinkedList()
   list.prepend(1)
   expect(list.head.value).toBe(1)

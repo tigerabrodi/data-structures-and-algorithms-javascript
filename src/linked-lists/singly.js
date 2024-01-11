@@ -39,4 +39,25 @@ export class SinglyLinkedList {
 
     this.length++
   }
+
+  removeLast() {
+    if (this.head === null) {
+      return null
+    }
+
+    let current = this.head
+    let previous = null
+
+    // This loop stops at the last node as current.next will be null for the tail
+    while (current.next !== null) {
+      previous = current
+      current = current.next
+    }
+
+    previous.next = null
+    this.tail = previous
+    this.length--
+
+    return current
+  }
 }
