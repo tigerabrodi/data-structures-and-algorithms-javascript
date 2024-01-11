@@ -79,4 +79,31 @@ export class DoublyLinkedList {
       return removed
     }
   }
+
+  insert(index, value) {
+    if (this.head === null) {
+      return null
+    }
+
+    const isIndexOutOfBounds = index < 0 || index > this.length
+
+    if (isIndexOutOfBounds) {
+      return null
+    }
+
+    let nodeBeforeIndex = this.head
+    for (let i = 0; i < index - 1; i++) {
+      nodeBeforeIndex = nodeBeforeIndex.next
+    }
+
+    const newNode = new Node(value)
+
+    nodeBeforeIndex.next.prev = newNode
+    newNode.next = nodeBeforeIndex.next.prev
+
+    nodeBeforeIndex.next = newNode
+    newNode.prev = nodeBeforeIndex
+
+    this.length++
+  }
 }

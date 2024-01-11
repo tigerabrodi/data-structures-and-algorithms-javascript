@@ -49,7 +49,7 @@ it('should remove an element from the end of the list', () => {
 })
 
 // Test for removing an element from the beginning
-it.only('should remove an element from the beginning of the list', () => {
+it('should remove an element from the beginning of the list', () => {
   const list = new DoublyLinkedList()
   list.append(1)
   list.append(2)
