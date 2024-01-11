@@ -40,6 +40,30 @@ export class SinglyLinkedList {
     this.length++
   }
 
+  insert(index, value) {
+    if (this.head === null) return null
+    if (index === 0) {
+      this.prepend(value)
+      return
+    }
+
+    if (index >= this.length) {
+      this.append(value)
+      return
+    }
+
+    let current = this.head
+
+    for (let i = 0; i < index - 1; i++) {
+      current = current.next
+    }
+
+    const newNode = new Node(value)
+    newNode.next = current.next
+    current.next = newNode
+    this.length++
+  }
+
   removeFirst() {
     if (this.head === null) return null
 
