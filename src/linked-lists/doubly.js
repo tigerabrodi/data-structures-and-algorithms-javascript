@@ -35,6 +35,10 @@ export class DoublyLinkedList {
       this.length++
     } else {
       const newNode = new Node(value)
+      this.head.prev = newNode
+      newNode.next = this.head
+      this.head = newNode
+      this.length++
     }
   }
 }
