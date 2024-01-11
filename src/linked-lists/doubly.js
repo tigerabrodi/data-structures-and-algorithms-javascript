@@ -106,4 +106,29 @@ export class DoublyLinkedList {
 
     this.length++
   }
+
+  removeAt(index) {
+    if (this.head === null) {
+      return null
+    }
+
+    const isIndexOutOfBounds = index < 0 || index > this.length
+
+    if (isIndexOutOfBounds) {
+      return null
+    }
+
+    let nodeBeforeIndex = this.head
+    for (let i = 0; i < index - 1; i++) {
+      nodeBeforeIndex = nodeBeforeIndex.next
+    }
+
+    const removed = nodeBeforeIndex.next
+
+    nodeBeforeIndex.next.next.prev = nodeBeforeIndex
+    nodeBeforeIndex.next = nodeBeforeIndex.next.next
+
+    this.length--
+    return removed
+  }
 }
