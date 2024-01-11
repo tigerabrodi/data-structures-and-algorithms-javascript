@@ -21,7 +21,9 @@ export class SinglyLinkedList {
       this.head = new Node(value)
       this.tail = this.head
     } else {
-      this.tail.next = new Node(value)
+      const newNode = new Node(value)
+      this.tail.next = newNode
+      this.tail = newNode
     }
 
     this.length++
@@ -44,24 +46,50 @@ export class SinglyLinkedList {
     if (this.head === null) return null
     if (index === 0) {
       this.prepend(value)
+      this.length++
       return
     }
 
-    if (index >= this.length) {
-      this.append(value)
-      return
-    }
+    const isIndexOutOfBounds = index < 0 || index > this.length
 
-    let current = this.head
+    if (isIndexOutOfBounds) return null
+
+    let nodeBeforeIndexToBeInsertedAt = this.head
 
     for (let i = 0; i < index - 1; i++) {
-      current = current.next
+      nodeBeforeIndexToBeInsertedAt = nodeBeforeIndexToBeInsertedAt.next
     }
 
     const newNode = new Node(value)
-    newNode.next = current.next
-    current.next = newNode
+    newNode.next = nodeBeforeIndexToBeInsertedAt.next
+    nodeBeforeIndexToBeInsertedAt.next = newNode
     this.length++
+  }
+
+  removeAt(index) {
+    if (this.head === null) return null
+
+    const isIndexOutOfBounds = index < 0 || index > this.length
+    if (isIndexOutOfBounds) return null
+
+    if (index === 0) {
+      return this.removeFirst()
+    }
+
+    let currentNode = this.head
+    for (let i = 0; i < index - 1; i++) {
+      currentNode = currentNode.next
+    }
+
+    const removed = currentNode.next
+    currentNode.next = currentNode.next.next
+
+    if (index === this.length - 1) {
+      this.tail = currentNode
+    }
+
+    this.length--
+    return removed
   }
 
   removeFirst() {
@@ -79,19 +107,19 @@ export class SinglyLinkedList {
       return null
     }
 
-    let current = this.head
-    let previous = null
+    let tail = this.head
+    let nodeBeforeTail = null
 
     // This loop stops at the last node as current.next will be null for the tail
-    while (current.next !== null) {
-      previous = current
-      current = current.next
+    while (tail.next !== null) {
+      nodeBeforeTail = tail
+      tail = tail.next
     }
 
-    previous.next = null
-    this.tail = previous
+    nodeBeforeTail.next = null
+    this.tail = nodeBeforeTail
     this.length--
 
-    return current
+    return tail
   }
 }
