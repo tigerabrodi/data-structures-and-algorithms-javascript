@@ -12,4 +12,29 @@ export class DoublyLinkedList {
     this.tail = null
     this.length = 0
   }
+
+  append(value) {
+    if (this.head === null) {
+      this.head = new Node(value)
+      this.tail = this.head
+      this.length++
+    } else {
+      const newNode = new Node(value)
+      this.tail.next = newNode
+      newNode.prev = this.tail
+      newNode.next = null
+      this.tail = newNode
+      this.length++
+    }
+  }
+
+  prepend(value) {
+    if (this.head === null) {
+      this.head = new Node(value)
+      this.tail = this.head
+      this.length++
+    } else {
+      const newNode = new Node(value)
+    }
+  }
 }

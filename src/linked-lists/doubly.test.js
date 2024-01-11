@@ -12,7 +12,7 @@ it('should create a new list', () => {
 })
 
 // Test for appending an element
-it.only('should append an element to the list', () => {
+it('should append an element to the list', () => {
   const list = new DoublyLinkedList()
   list.append(1)
   expect(list.head.value).toBe(1)
@@ -25,7 +25,7 @@ it.only('should append an element to the list', () => {
 })
 
 // Test for prepending an element
-it('should prepend an element to the list', () => {
+it.only('should prepend an element to the list', () => {
   const list = new DoublyLinkedList()
   list.prepend(1)
   expect(list.head.value).toBe(1)
