@@ -10,7 +10,7 @@ it('should store and retrieve values', () => {
   expect(hashTable.get('key2')).toBe('value2')
 })
 
-it.only('should handle collisions', () => {
+it('should handle collisions', () => {
   const hashTable = new HashTable(10)
   // These keys should result in the same hash index to test collision handling
   hashTable.set('key1', 'value1')
@@ -27,7 +27,7 @@ it('should return null for non-existent keys', () => {
   expect(hashTable.get('key2')).toBeNull()
 })
 
-it('should allow removing a value', () => {
+it.only('should allow removing a value', () => {
   const hashTable = new HashTable(10)
   hashTable.set('key1', 'value1')
   hashTable.remove('key1')

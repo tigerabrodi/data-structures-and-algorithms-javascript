@@ -126,6 +126,30 @@ export class SinglyLinkedList {
     return removed
   }
 
+  removeKey(key) {
+    if (this.head === null) return null
+
+    let currentNode = this.head
+    let nodeBeforeKey = null
+
+    while (currentNode !== null) {
+      if (currentNode.key === key) {
+        if (nodeBeforeKey === null) {
+          return this.removeFirst()
+        }
+
+        nodeBeforeKey.next = currentNode.next
+        this.length--
+        return currentNode
+      }
+
+      nodeBeforeKey = currentNode
+      currentNode = currentNode.next
+    }
+
+    return null
+  }
+
   removeFirst() {
     if (this.head === null) return null
 

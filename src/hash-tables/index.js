@@ -57,4 +57,24 @@ export class HashTable {
       this.data[index] = newLinkedList
     }
   }
+
+  remove(key) {
+    const hashedKey = this.#hashKeyViaASCII(key)
+    const index = this.#turnHashToIndex(hashedKey)
+    const bucket = this.data[index]
+
+    if (!bucket) return null
+
+    let currentNode = bucket.head
+
+    while (currentNode) {
+      if (currentNode.key === key) {
+        bucket.removeKey(key)
+      }
+
+      currentNode = currentNode.next
+    }
+
+    return null
+  }
 }
