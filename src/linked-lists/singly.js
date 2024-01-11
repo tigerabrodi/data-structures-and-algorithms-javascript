@@ -1,7 +1,3 @@
-// Singly Linked List: Node: value, next
-// Singly Linked List: Head, Tail, Length
-// Node -> Node -> Node
-
 class Node {
   constructor(value) {
     this.value = value
