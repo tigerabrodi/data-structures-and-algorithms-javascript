@@ -81,7 +81,7 @@ it('should remove an element by index', () => {
 })
 
 // Test for finding an element
-it.only('should find an element in the list', () => {
+it('should find an element in the list', () => {
   const list = new DoublyLinkedList()
   list.append(1)
   list.append(2)

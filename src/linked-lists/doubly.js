@@ -147,4 +147,19 @@ export class DoublyLinkedList {
 
     return null
   }
+
+  toArray() {
+    if (this.head === null) return []
+
+    let array = []
+
+    let currentNode = this.head
+
+    while (currentNode !== null) {
+      array.push(currentNode.value)
+      currentNode = currentNode.next
+    }
+
+    return array
+  }
 }
