@@ -60,4 +60,23 @@ export class DoublyLinkedList {
       return removed
     }
   }
+
+  removeFirst() {
+    if (this.head === null) {
+      return null
+    } else if (this.head.value === this.tail.value) {
+      const removed = this.tail
+      this.head = null
+      this.tail = null
+      this.length--
+      return removed
+    } else {
+      const removed = this.head
+      this.head.next.prev = null
+      this.head = this.head.next
+      this.length--
+
+      return removed
+    }
+  }
 }
