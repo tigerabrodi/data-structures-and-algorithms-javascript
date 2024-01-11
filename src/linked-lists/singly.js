@@ -40,6 +40,16 @@ export class SinglyLinkedList {
     this.length++
   }
 
+  removeFirst() {
+    if (this.head === null) return null
+
+    const removed = this.head
+    this.head = this.head.next
+    this.length--
+
+    return removed
+  }
+
   removeLast() {
     if (this.head === null) {
       return null
