@@ -27,7 +27,7 @@ it('should return null for non-existent keys', () => {
   expect(hashTable.get('key2')).toBeNull()
 })
 
-it.only('should allow removing a value', () => {
+it('should allow removing a value', () => {
   const hashTable = new HashTable(10)
   hashTable.set('key1', 'value1')
   hashTable.remove('key1')
