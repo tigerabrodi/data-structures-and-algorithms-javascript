@@ -26,4 +26,17 @@ export class SinglyLinkedList {
 
     this.length++
   }
+
+  prepend(value) {
+    if (this.head === null) {
+      this.head = new Node(value)
+      this.tail = this.head
+    } else {
+      const node = new Node(value)
+      node.next = this.head
+      this.head = node
+    }
+
+    this.length++
+  }
 }
