@@ -25,7 +25,7 @@ it('should append an element to the list', () => {
 })
 
 // Test for prepending an element
-it.only('should prepend an element to the list', () => {
+it('should prepend an element to the list', () => {
   const list = new DoublyLinkedList()
   list.prepend(1)
   expect(list.head.value).toBe(1)
@@ -49,7 +49,7 @@ it('should remove an element from the end of the list', () => {
 })
 
 // Test for removing an element from the beginning
-it('should remove an element from the beginning of the list', () => {
+it.only('should remove an element from the beginning of the list', () => {
   const list = new DoublyLinkedList()
   list.append(1)
   list.append(2)
