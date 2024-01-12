@@ -2,13 +2,13 @@ import { it, expect } from 'vitest'
 import { AdjListUndirected } from './adj-list-undirected'
 
 // Test for creating a new graph
-it.only('should create a new graph', () => {
+it('should create a new graph', () => {
   const graph = new AdjListUndirected()
   expect(graph).toBeDefined()
 })
 
 // Test for adding a vertex
-it('should add vertices correctly', () => {
+it.only('should add vertices correctly', () => {
   const graph = new AdjListUndirected()
   graph.addVertex('A')
   graph.addVertex('B')
