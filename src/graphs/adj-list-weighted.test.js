@@ -26,7 +26,7 @@ it('should add weighted edges correctly', () => {
   expect(graph.getEdgeWeight('A', 'B')).toBe(5)
 })
 
-it.only('should remove an edge correctly', () => {
+it('should remove an edge correctly', () => {
   const graph = new WeightedGraph()
   graph.addVertex('A')
   graph.addVertex('B')
@@ -44,6 +44,6 @@ it('should find the shortest path between two vertices', () => {
   graph.addEdge('B', 'C', 2)
   graph.addEdge('A', 'C', 4)
 
-  const shortestPath = graph.findShortestPath('A', 'C')
+  const shortestPath = graph.findShortestPathDijkstra('A', 'C')
   expect(shortestPath).toEqual(['A', 'B', 'C']) // Expected path with total weight of 3
 })
