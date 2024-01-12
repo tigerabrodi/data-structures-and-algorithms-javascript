@@ -1,8 +1,8 @@
 import { it, expect } from 'vitest'
-import { AdjListDirected } from './adj-list-directed' // Adjust import as necessary
+import { AdjListDirected } from './adj-list-directed'
 
 // Test for creating a new graph
-it.only('should create a new graph', () => {
+it('should create a new graph', () => {
   const graph = new AdjListDirected()
   expect(graph).toBeDefined()
 })
@@ -18,7 +18,7 @@ it('should add vertices correctly', () => {
 })
 
 // Test for adding a directed edge
-it('should add a directed edge correctly', () => {
+it.only('should add a directed edge correctly', () => {
   const graph = new AdjListDirected()
   graph.addVertex('A')
   graph.addVertex('B')

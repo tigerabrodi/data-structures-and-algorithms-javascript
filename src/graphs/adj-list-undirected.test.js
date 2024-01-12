@@ -82,7 +82,7 @@ it('should correctly perform DFS traversal', () => {
 })
 
 // Test for Breadth-First Search (BFS)
-it.only('should correctly perform BFS traversal', () => {
+it('should correctly perform BFS traversal', () => {
   const graph = createSampleGraph()
   const bfsResult = graph.bfs('A')
   expect(bfsResult).toEqual(['A', 'B', 'C', 'D', 'E', 'F', 'G'])
