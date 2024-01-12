@@ -26,4 +26,13 @@ export class AdjListDirected {
     const edgesForVertex1 = this.list.get(vertex1)
     return edgesForVertex1.includes(vertex2)
   }
+
+  removeEdge(vertex1, vertex2) {
+    const edgesForVertex1 = this.list.get(vertex1)
+    const newEdgesForVertex1 = edgesForVertex1.filter(
+      (vertex) => vertex !== vertex2
+    )
+
+    this.list.set(vertex1, newEdgesForVertex1)
+  }
 }
