@@ -2,7 +2,7 @@ import { it, expect } from 'vitest'
 import { WeightedGraph } from './adj-list-weighted'
 
 // Test for creating a new graph
-it.only('should create a new graph', () => {
+it('should create a new graph', () => {
   const graph = new WeightedGraph()
   expect(graph).toBeDefined()
 })
@@ -17,7 +17,7 @@ it('should add vertices correctly', () => {
 })
 
 // Test for adding a weighted edge
-it('should add weighted edges correctly', () => {
+it.only('should add weighted edges correctly', () => {
   const graph = new WeightedGraph()
   graph.addVertex('A')
   graph.addVertex('B')
