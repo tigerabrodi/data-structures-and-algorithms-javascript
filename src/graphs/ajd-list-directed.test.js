@@ -18,7 +18,7 @@ it('should add vertices correctly', () => {
 })
 
 // Test for adding a directed edge
-it.only('should add a directed edge correctly', () => {
+it('should add a directed edge correctly', () => {
   const graph = new AdjListDirected()
   graph.addVertex('A')
   graph.addVertex('B')
@@ -28,7 +28,7 @@ it.only('should add a directed edge correctly', () => {
 })
 
 // Test for removing a directed edge
-it('should remove a directed edge correctly', () => {
+it.only('should remove a directed edge correctly', () => {
   const graph = new AdjListDirected()
   graph.addVertex('A')
   graph.addVertex('B')

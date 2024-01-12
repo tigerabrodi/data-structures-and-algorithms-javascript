@@ -15,4 +15,15 @@ export class AdjListDirected {
     const isExistingVertex = this.list.has(vertex)
     return isExistingVertex
   }
+
+  addEdge(vertex1, vertex2) {
+    const edgesForVertex1 = this.list.get(vertex1)
+    const newEdgesForVertex1 = [...edgesForVertex1, vertex2]
+    this.list.set(vertex1, newEdgesForVertex1)
+  }
+
+  hasEdge(vertex1, vertex2) {
+    const edgesForVertex1 = this.list.get(vertex1)
+    return edgesForVertex1.includes(vertex2)
+  }
 }
