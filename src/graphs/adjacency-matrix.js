@@ -6,4 +6,9 @@ export class AdjacencyMatrix {
       Array.from({ length: numberOfVertices }, () => 0)
     )
   }
+
+  addEdge(vertex1, vertex2) {
+    this.matrix[vertex1][vertex2] = 1
+    this.matrix[vertex2][vertex1] = 1
+  }
 }
