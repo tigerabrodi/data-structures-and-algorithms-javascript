@@ -26,8 +26,8 @@ export class MinHeap {
     let indexOfParentNode = this.#getParentIndex(indexOfInsertedNode)
 
     while (true) {
-      let valueOfInsertedNode = this.heap[indexOfInsertedNode]
-      let valueOfParentNode = this.heap[indexOfParentNode]
+      const valueOfInsertedNode = this.heap[indexOfInsertedNode]
+      const valueOfParentNode = this.heap[indexOfParentNode]
 
       if (valueOfParentNode > valueOfInsertedNode) {
         this.#swap(indexOfInsertedNode, indexOfParentNode)
@@ -46,5 +46,68 @@ export class MinHeap {
   insert(value) {
     this.heap.push(value)
     this.#bubbleUp()
+  }
+
+  #getLeftChildIndex(parentIndex) {
+    return 2 * parentIndex + 1
+  }
+
+  #getRightChildIndex(parentIndex) {
+    return 2 * parentIndex + 2
+  }
+
+  #bubbleDown() {
+    let indexToBubbleDown = 0
+
+    while (true) {
+      const leftChildIndex = this.#getLeftChildIndex(indexToBubbleDown)
+      const rightChildIndex = this.#getRightChildIndex(indexToBubbleDown)
+
+      const currentValue = this.heap[indexToBubbleDown]
+      const leftChildValue = this.heap[leftChildIndex]
+      const rightChildValue = this.heap[rightChildIndex]
+
+      const isCurrentLessThanBothChildren =
+        leftChildValue < currentValue && rightChildValue < currentValue
+
+      if (isCurrentLessThanBothChildren) {
+        if (leftChildValue < rightChildValue) {
+          this.#swap(leftChildIndex, indexToBubbleDown)
+          indexToBubbleDown = leftChildIndex
+          continue
+        }
+
+        if (rightChildValue < leftChildValue) {
+          this.#swap(rightChildIndex, indexToBubbleDown)
+          indexToBubbleDown = rightChildIndex
+          continue
+        }
+      }
+
+      if (leftChildValue < currentValue) {
+        this.#swap(leftChildIndex, indexToBubbleDown)
+        indexToBubbleDown = leftChildIndex
+        continue
+      }
+
+      if (rightChildValue < currentValue) {
+        this.#swap(rightChildIndex, indexToBubbleDown)
+        indexToBubbleDown = rightChildIndex
+        continue
+      }
+
+      break
+    }
+  }
+
+  remove() {
+    const indexOfLastItem = this.heap.length - 1
+    const lastItem = this.heap[indexOfLastItem]
+    const firstItem = this.heap[0]
+
+    this.heap[0] = lastItem
+    this.#bubbleDown()
+
+    return firstItem
   }
 }

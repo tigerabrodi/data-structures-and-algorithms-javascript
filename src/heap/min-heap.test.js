@@ -9,7 +9,7 @@ it('should create an empty min heap', () => {
 })
 
 // Test for inserting elements
-it.only('should insert elements and maintain min heap property', () => {
+it('should insert elements and maintain min heap property', () => {
   const minHeap = new MinHeap()
   minHeap.insert(3)
   minHeap.insert(1)
@@ -19,7 +19,7 @@ it.only('should insert elements and maintain min heap property', () => {
 })
 
 // Test for removing the root element
-it('should remove the root element and maintain min heap property', () => {
+it.only('should remove the root element and maintain min heap property', () => {
   const minHeap = new MinHeap()
   minHeap.insert(3)
   minHeap.insert(1)
