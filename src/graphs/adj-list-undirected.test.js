@@ -45,3 +45,45 @@ it('should handle non-existing edges correctly', () => {
   graph.addVertex('B')
   expect(graph.hasEdge('A', 'B')).toBe(false)
 })
+
+// Setup a sample graph
+function createSampleGraph() {
+  const graph = new AdjListUndirected()
+  // A graph that looks like:
+  //     A
+  //   /   \
+  //  B     C
+  //  |     |
+  //  D --- E
+  //       / \
+  //      F   G
+  graph.addVertex('A')
+  graph.addVertex('B')
+  graph.addVertex('C')
+  graph.addVertex('D')
+  graph.addVertex('E')
+  graph.addVertex('F')
+  graph.addVertex('G')
+  graph.addEdge('A', 'B')
+  graph.addEdge('A', 'C')
+  graph.addEdge('B', 'D')
+  graph.addEdge('C', 'E')
+  graph.addEdge('D', 'E')
+  graph.addEdge('E', 'F')
+  graph.addEdge('E', 'G')
+  return graph
+}
+
+// Test for Depth-First Search (DFS)
+it.only('should correctly perform DFS traversal', () => {
+  const graph = createSampleGraph()
+  const dfsResult = graph.dfs('A')
+  expect(dfsResult).toEqual(['A', 'B', 'D', 'E', 'C', 'F', 'G'])
+})
+
+// Test for Breadth-First Search (BFS)
+it('should correctly perform BFS traversal', () => {
+  const graph = createSampleGraph()
+  const bfsResult = graph.bfs('A')
+  expect(bfsResult).toEqual(['A', 'B', 'C', 'D', 'E', 'F', 'G'])
+})

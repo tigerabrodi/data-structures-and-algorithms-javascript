@@ -51,4 +51,20 @@ export class AdjListUndirected {
     this.list.set(vertex1, newEdgesForVertex1)
     this.list.set(vertex2, newEdgesForVertex2)
   }
+
+  dfs(startingVertex, visited = new Set(), result = []) {
+    if (!visited.has(startingVertex)) {
+      visited.add(startingVertex)
+      result.push(startingVertex)
+    }
+
+    const edges = this.list.get(startingVertex)
+    edges.forEach((edge) => {
+      if (!visited.has(edge)) {
+        this.dfs(edge, visited, result)
+      }
+    })
+
+    return result
+  }
 }
