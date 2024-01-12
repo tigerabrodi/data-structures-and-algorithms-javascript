@@ -17,13 +17,22 @@ it('should add vertices correctly', () => {
 })
 
 // Test for adding a weighted edge
-it.only('should add weighted edges correctly', () => {
+it('should add weighted edges correctly', () => {
   const graph = new WeightedGraph()
   graph.addVertex('A')
   graph.addVertex('B')
   graph.addEdge('A', 'B', 5)
   expect(graph.hasEdge('A', 'B')).toBe(true)
   expect(graph.getEdgeWeight('A', 'B')).toBe(5)
+})
+
+it.only('should remove an edge correctly', () => {
+  const graph = new WeightedGraph()
+  graph.addVertex('A')
+  graph.addVertex('B')
+  graph.addEdge('A', 'B', 5)
+  graph.removeEdge('A', 'B')
+  expect(graph.hasEdge('A', 'B')).toBe(false)
 })
 
 it('should find the shortest path between two vertices', () => {

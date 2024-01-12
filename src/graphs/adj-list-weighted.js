@@ -79,4 +79,22 @@ export class WeightedGraph {
 
     return edgeForVertex1.weight
   }
+
+  removeEdge(vertex1, vertex2) {
+    this.#checkBothVertices(vertex1, vertex2)
+
+    const edgesForVertex1 = this.list.get(vertex1)
+    const edgesForVertex2 = this.list.get(vertex2)
+
+    const newEdgesForVertex1 = edgesForVertex1.filter(
+      (edge) => edge.value !== vertex2
+    )
+
+    const newEdgesForVertex2 = edgesForVertex2.filter(
+      (edge) => edge.value !== vertex1
+    )
+
+    this.list.set(vertex1, newEdgesForVertex1)
+    this.list.set(vertex2, newEdgesForVertex2)
+  }
 }
