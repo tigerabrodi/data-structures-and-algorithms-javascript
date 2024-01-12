@@ -2,14 +2,14 @@ import { it, expect } from 'vitest'
 import { MinHeap } from './min-heap'
 
 // Test for creating a new min heap
-it.only('should create an empty min heap', () => {
+it('should create an empty min heap', () => {
   const minHeap = new MinHeap()
   expect(minHeap).toBeDefined()
   expect(minHeap.isEmpty()).toBe(true)
 })
 
 // Test for inserting elements
-it('should insert elements and maintain min heap property', () => {
+it.only('should insert elements and maintain min heap property', () => {
   const minHeap = new MinHeap()
   minHeap.insert(3)
   minHeap.insert(1)
