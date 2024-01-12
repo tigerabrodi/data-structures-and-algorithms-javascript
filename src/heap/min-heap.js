@@ -56,9 +56,7 @@ export class MinHeap {
     return 2 * parentIndex + 2
   }
 
-  #bubbleDown() {
-    let indexToBubbleDown = 0
-
+  #bubbleDown(indexToBubbleDown = 0) {
     while (true) {
       const leftChildIndex = this.#getLeftChildIndex(indexToBubbleDown)
       const rightChildIndex = this.#getRightChildIndex(indexToBubbleDown)
@@ -109,5 +107,21 @@ export class MinHeap {
     this.#bubbleDown()
 
     return firstItem
+  }
+
+  #getIndexOfLastNonLeafNode() {
+    const indexOfLastItem = this.heap.length - 1
+    return this.#getParentIndex(indexOfLastItem)
+  }
+
+  heapify(array) {
+    this.heap = array
+
+    let indexOfLastNonLeafNode = this.#getIndexOfLastNonLeafNode()
+
+    while (indexOfLastNonLeafNode >= 0) {
+      this.#bubbleDown(indexOfLastNonLeafNode)
+      indexOfLastNonLeafNode--
+    }
   }
 }
