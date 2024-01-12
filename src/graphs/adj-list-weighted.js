@@ -10,6 +10,13 @@ export class WeightedGraph {
     this.list = new Map()
   }
 
+  #checkBothVertices(vertex1, vertex2) {
+    const hasVertex1 = this.list.has(vertex1)
+    const hasVertex2 = this.list.has(vertex2)
+
+    if (!hasVertex1 || !hasVertex2) throw new Error('Invalid vertices')
+  }
+
   addVertex(vertex) {
     const hasVertex = this.list.has(vertex)
 
@@ -24,10 +31,7 @@ export class WeightedGraph {
   }
 
   addEdge(vertex1, vertex2, weight) {
-    const hasVertex1 = this.list.has(vertex1)
-    const hasVertex2 = this.list.has(vertex2)
-
-    if (!hasVertex1 || !hasVertex2) throw new Error('Invalid vertices')
+    this.#checkBothVertices(vertex1, vertex2)
 
     const edgesForVertex1 = this.list.get(vertex1)
     const edgesForVertex2 = this.list.get(vertex2)
@@ -43,10 +47,7 @@ export class WeightedGraph {
   }
 
   hasEdge(vertex1, vertex2) {
-    const hasVertex1 = this.list.has(vertex1)
-    const hasVertex2 = this.list.has(vertex2)
-
-    if (!hasVertex1 || !hasVertex2) throw new Error('Invalid vertices')
+    this.#checkBothVertices(vertex1, vertex2)
 
     const edgesForVertex1 = this.list.get(vertex1)
     const edgesForVertex2 = this.list.get(vertex2)
@@ -63,10 +64,7 @@ export class WeightedGraph {
   }
 
   getEdgeWeight(vertex1, vertex2) {
-    const hasVertex1 = this.list.has(vertex1)
-    const hasVertex2 = this.list.has(vertex2)
-
-    if (!hasVertex1 || !hasVertex2) throw new Error('Invalid vertices')
+    this.#checkBothVertices(vertex1, vertex2)
 
     const edgesForVertex1 = this.list.get(vertex1)
     const edgesForVertex2 = this.list.get(vertex2)
