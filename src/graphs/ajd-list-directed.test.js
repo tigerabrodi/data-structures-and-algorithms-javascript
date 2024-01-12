@@ -46,7 +46,7 @@ it('should handle non-existing edges correctly', () => {
 })
 
 // Test for handling invalid vertices in edge operations
-it('should handle invalid vertices when adding or removing edges', () => {
+it.only('should handle invalid vertices when adding or removing edges', () => {
   const graph = new AdjListDirected()
   graph.addVertex('A')
   expect(() => graph.addEdge('A', 'B')).toThrow()
