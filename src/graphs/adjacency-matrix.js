@@ -16,4 +16,8 @@ export class AdjacencyMatrix {
     this.matrix[vertex1][vertex2] = 0
     this.matrix[vertex2][vertex1] = 0
   }
+
+  hasEdge(vertex1, vertex2) {
+    return this.matrix[vertex1][vertex2] === 1
+  }
 }
