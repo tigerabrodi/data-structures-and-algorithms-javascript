@@ -75,14 +75,14 @@ function createSampleGraph() {
 }
 
 // Test for Depth-First Search (DFS)
-it.only('should correctly perform DFS traversal', () => {
+it('should correctly perform DFS traversal', () => {
   const graph = createSampleGraph()
   const dfsResult = graph.dfs('A')
   expect(dfsResult).toEqual(['A', 'B', 'D', 'E', 'C', 'F', 'G'])
 })
 
 // Test for Breadth-First Search (BFS)
-it('should correctly perform BFS traversal', () => {
+it.only('should correctly perform BFS traversal', () => {
   const graph = createSampleGraph()
   const bfsResult = graph.bfs('A')
   expect(bfsResult).toEqual(['A', 'B', 'C', 'D', 'E', 'F', 'G'])

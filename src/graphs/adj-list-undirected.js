@@ -67,4 +67,25 @@ export class AdjListUndirected {
 
     return result
   }
+
+  bfs(startingVertex) {
+    const visited = new Set()
+    const queue = [startingVertex]
+    visited.add(startingVertex)
+    const result = [startingVertex]
+
+    while (queue.length) {
+      const currentVertex = queue.shift()
+      const edges = this.list.get(currentVertex)
+      edges.forEach((edge) => {
+        if (!visited.has(edge)) {
+          result.push(edge)
+          visited.add(edge)
+          queue.push(edge)
+        }
+      })
+    }
+
+    return result
+  }
 }
