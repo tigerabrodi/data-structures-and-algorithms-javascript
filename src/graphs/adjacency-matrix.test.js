@@ -8,7 +8,7 @@ it('should create a new graph with the correct number of vertices', () => {
   graph.matrix.forEach((row) => expect(row.length).toBe(4))
 })
 
-it.only('should correctly add an edge between two vertices', () => {
+it('should correctly add an edge between two vertices', () => {
   const graph = new AdjacencyMatrix(4)
   graph.addEdge(0, 1)
   expect(graph.matrix[0][1]).toBe(1)

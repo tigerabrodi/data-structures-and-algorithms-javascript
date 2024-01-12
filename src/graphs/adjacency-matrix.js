@@ -11,4 +11,9 @@ export class AdjacencyMatrix {
     this.matrix[vertex1][vertex2] = 1
     this.matrix[vertex2][vertex1] = 1
   }
+
+  removeEdge(vertex1, vertex2) {
+    this.matrix[vertex1][vertex2] = 0
+    this.matrix[vertex2][vertex1] = 0
+  }
 }
