@@ -18,7 +18,7 @@ it('should add vertices correctly', () => {
 })
 
 // Test for adding an edge
-it.only('should add an edge correctly', () => {
+it('should add an edge correctly', () => {
   const graph = new AdjListUndirected()
   graph.addVertex('A')
   graph.addVertex('B')
