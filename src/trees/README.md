@@ -46,3 +46,11 @@ A binary tree is a tree data structure in which each node has at most two childr
 - Inorder Traversal: 1, 2, 3, 4, 5
 - Preorder Traversal: 3, 2, 1, 5, 4
 - Postorder Traversal: 1, 2, 4, 5, 3
+
+# Binary Search Tree
+
+A binary search tree is a binary tree in which the value of left child is less than or equal to the parent node and value of right child is greater than or equal to the parent node.
+
+This is nice because it allows us to search for a value in O(log n) time. Because the tree is sorted, we can use a binary search to find the value we're looking for.
+
+e.g. If we're looking for a value, we can cut out half of the tree by comparing the value we're looking for to the root node. If it's less than the root node, we can ignore the right subtree. If it's greater than the root node, we can ignore the left subtree.
