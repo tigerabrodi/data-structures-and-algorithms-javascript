@@ -9,7 +9,7 @@ it('should create an empty circular linked list', () => {
 })
 
 // Test for appending elements
-it.only('should append elements correctly', () => {
+it('should append elements correctly', () => {
   const list = new CircularLinkedList()
   list.append(1)
   list.append(2)
@@ -19,7 +19,7 @@ it.only('should append elements correctly', () => {
 })
 
 // Test for prepending elements
-it('should prepend elements correctly', () => {
+it.only('should prepend elements correctly', () => {
   const list = new CircularLinkedList()
   list.prepend(1)
   list.prepend(2)

@@ -33,13 +33,16 @@ export class CircularLinkedList {
   }
 
   prepend(value) {
+    const newNode = new Node(value)
+
     if (this.head === null) {
-      this.head = new Node(value)
+      this.head = newNode
       this.tail = this.head
+      this.tail.next = this.head
     } else {
-      const node = new Node(value)
-      node.next = this.head
-      this.head = node
+      this.tail.next = newNode
+      newNode.next = this.head
+      this.head = newNode
     }
 
     this.length++
