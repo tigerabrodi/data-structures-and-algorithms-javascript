@@ -17,11 +17,14 @@ export class CircularLinkedList {
   }
 
   append(value) {
+    const newNode = new Node(value)
+
     if (this.head === null) {
-      this.head = new Node(value)
-      this.tail = this.head
+      this.head = newNode
+      this.tail = newNode
+      this.tail.next = this.head
     } else {
-      const newNode = new Node(value)
+      newNode.next = this.head
       this.tail.next = newNode
       this.tail = newNode
     }
@@ -52,13 +55,12 @@ export class CircularLinkedList {
     if (this.head === null) return []
 
     const array = []
-
     let currentNode = this.head
 
-    while (currentNode !== null) {
+    do {
       array.push(currentNode.value)
       currentNode = currentNode.next
-    }
+    } while (currentNode !== this.head)
 
     return array
   }

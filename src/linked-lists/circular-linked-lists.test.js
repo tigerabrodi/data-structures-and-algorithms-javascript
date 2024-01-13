@@ -2,20 +2,20 @@ import { it, expect } from 'vitest'
 import { CircularLinkedList } from './circular-linked-lists'
 
 // Test for creating a new circular linked list
-it.only('should create an empty circular linked list', () => {
+it('should create an empty circular linked list', () => {
   const list = new CircularLinkedList()
   expect(list).toBeDefined()
   expect(list.isEmpty()).toBe(true)
 })
 
 // Test for appending elements
-it('should append elements correctly', () => {
+it.only('should append elements correctly', () => {
   const list = new CircularLinkedList()
   list.append(1)
   list.append(2)
 
   expect(list.toArray()).toEqual([1, 2])
-  expect(list.tail.next.value).toBe(list.head.value) // Tail should point to head
+  expect(list.tail.next.value).toBe(list.head.value)
 })
 
 // Test for prepending elements
