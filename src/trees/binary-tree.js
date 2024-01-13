@@ -66,6 +66,18 @@ export class BinaryTree {
     return result
   }
 
+  postorderTraversal(currentNode = this.root, result = []) {
+    if (!currentNode) return result
+
+    console.log(currentNode)
+
+    this.postorderTraversal(currentNode.left, result)
+    this.inorderTraversal(currentNode.right, result)
+    result.push(currentNode.value)
+
+    return result
+  }
+
   toArray() {
     if (this.isEmpty()) {
       return null
