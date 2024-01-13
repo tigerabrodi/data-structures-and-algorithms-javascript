@@ -46,6 +46,16 @@ export class BinaryTree {
     }
   }
 
+  inorderTraversal(currentNode = this.root, result = []) {
+    if (!currentNode) return result
+
+    this.inorderTraversal(currentNode.left, result)
+    result.push(currentNode.value)
+    this.inorderTraversal(currentNode.right, result)
+
+    return result
+  }
+
   toArray() {
     if (this.isEmpty()) {
       return null
