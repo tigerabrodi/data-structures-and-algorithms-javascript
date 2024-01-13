@@ -2,7 +2,7 @@ import { it, expect } from 'vitest'
 import { BinaryTree } from './binary-tree'
 
 // Test for creating a new binary tree
-it.only('should create an empty binary tree', () => {
+it('should create an empty binary tree', () => {
   const tree = new BinaryTree()
   expect(tree).toBeDefined()
   expect(tree.isEmpty()).toBe(true)
