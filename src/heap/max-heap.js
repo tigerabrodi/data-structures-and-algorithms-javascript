@@ -107,4 +107,20 @@ export class MaxHeap {
     this.heap.push(value)
     this.#bubbleUp()
   }
+
+  #getIndexOfLastNonLeafNode() {
+    const indexOfLastItem = this.heap.length - 1
+    return this.#getParentIndex(indexOfLastItem)
+  }
+
+  heapify(array) {
+    this.heap = array
+
+    let indexOfLastNonLeafNode = this.#getIndexOfLastNonLeafNode()
+
+    while (indexOfLastNonLeafNode >= 0) {
+      this.#bubbleDown(indexOfLastNonLeafNode)
+      indexOfLastNonLeafNode--
+    }
+  }
 }
