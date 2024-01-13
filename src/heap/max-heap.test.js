@@ -2,7 +2,7 @@ import { it, expect } from 'vitest'
 import { MaxHeap } from './max-heap'
 
 // Test for creating a new max heap
-it.only('should create an empty max heap', () => {
+it('should create an empty max heap', () => {
   const maxHeap = new MaxHeap()
   expect(maxHeap).toBeDefined()
   expect(maxHeap.isEmpty()).toBe(true)
