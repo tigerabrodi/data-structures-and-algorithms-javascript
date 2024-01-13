@@ -47,6 +47,48 @@ A binary tree is a tree data structure in which each node has at most two childr
 - Preorder Traversal: 3, 2, 1, 5, 4
 - Postorder Traversal: 1, 2, 4, 5, 3
 
+# Preorder Traversal
+
+```plaintext
+	1
+       / \
+      2   3
+     /   / \
+    4   5   6
+```
+
+- Preorder Traversal: 1, 2, 4, 3, 5, 6
+
+In human language: For every node, we first visit the node itself, then the left subtree, and finally the right subtree. This means parents are visited before children.
+
+# Postorder Traversal
+
+```plaintext
+	1
+       / \
+      2   3
+     /   / \
+    4   5   6
+```
+
+- Postorder Traversal: 4, 2, 5, 6, 3, 1
+
+In human language: For every node, we first traverse the left subtree, then the right subtree, and finally the node itself. This means children are visited before parents.
+
+# Inorder Traversal
+
+```plaintext
+	1
+       / \
+      2   3
+     /   / \
+    4   5   6
+```
+
+- Inorder Traversal: 4, 2, 1, 5, 3, 6
+
+In human language: For every node, we first traverse the left subtree, then the node itself, and finally the right subtree. This means parents are visited before the right child, but after the left child.
+
 # Binary Search Tree
 
 A binary search tree is a binary tree in which the value of left child is less than or equal to the parent node and value of right child is greater than or equal to the parent node.
