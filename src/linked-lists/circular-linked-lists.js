@@ -153,12 +153,12 @@ export class CircularLinkedList {
     let nodeBeforeTail = null
 
     // This loop stops at the last node as current.next will be null for the tail
-    while (tail.next !== null) {
+    while (tail !== this.tail) {
       nodeBeforeTail = tail
       tail = tail.next
     }
 
-    nodeBeforeTail.next = null
+    nodeBeforeTail.next = this.head
     this.tail = nodeBeforeTail
     this.length--
 

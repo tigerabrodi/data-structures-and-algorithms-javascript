@@ -19,7 +19,7 @@ it('should append elements correctly', () => {
 })
 
 // Test for prepending elements
-it.only('should prepend elements correctly', () => {
+it('should prepend elements correctly', () => {
   const list = new CircularLinkedList()
   list.prepend(1)
   list.prepend(2)
