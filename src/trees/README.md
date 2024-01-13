@@ -21,7 +21,7 @@ A binary tree is a tree data structure in which each node has at most two childr
 - **Complete Binary Tree**: Every level, except possibly the last, is completely filled.
 - **Full Binary Tree**: Every node has 0 or 2 children.
 - **Perfect Binary Tree**: All internal nodes have two children, and all leaves are at the same level.
-- **Balanced Binary Tree**: The height of the tree is O(log n) where n is the number of nodes.
+- **Balanced Binary Tree**: The height of the tree is O(log n) where n is the number of nodes. The height whose nodes all have left and right subtrees whose heights differ by at most 1.
 
 ## Operations
 
