@@ -61,3 +61,7 @@ This is a bit confusing, so in the code I've made it clearer with util functions
     return this.#getParentIndex(indexOfLastItem)
   }
 ```
+
+# Max Heap
+
+Similar to min heap, but the root node is the maximum element in the heap. So you can imagine how the other operations change because of it.
