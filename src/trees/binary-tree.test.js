@@ -19,7 +19,7 @@ it('should insert elements', () => {
 })
 
 // Test for inorder traversal
-it.only('should perform inorder traversal', () => {
+it('should perform inorder traversal', () => {
   const tree = new BinaryTree()
 
   tree.insert(3)
@@ -33,7 +33,7 @@ it.only('should perform inorder traversal', () => {
 })
 
 // Test for preorder traversal
-it('should perform preorder traversal', () => {
+it.only('should perform preorder traversal', () => {
   const tree = new BinaryTree()
   tree.insert(3)
   tree.insert(1)

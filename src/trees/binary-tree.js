@@ -46,6 +46,16 @@ export class BinaryTree {
     }
   }
 
+  preorderTraversal(currentNode = this.root, result = []) {
+    if (!currentNode) return result
+
+    result.push(currentNode.value)
+    this.preorderTraversal(currentNode.left, result)
+    this.preorderTraversal(currentNode.right, result)
+
+    return result
+  }
+
   inorderTraversal(currentNode = this.root, result = []) {
     if (!currentNode) return result
 
