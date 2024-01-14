@@ -36,7 +36,7 @@ it('should find elements in the BST', () => {
 })
 
 // Test for deleting a leaf node (no children)
-it.only('should delete a leaf node correctly', () => {
+it('should delete a leaf node correctly', () => {
   const bst = new BinarySearchTree()
   bst.insert(10)
   bst.insert(5)
@@ -48,7 +48,7 @@ it.only('should delete a leaf node correctly', () => {
 })
 
 // Test for deleting a node with only a left child
-it('should delete a node with only a left child correctly', () => {
+it.only('should delete a node with only a left child correctly', () => {
   const bst = new BinarySearchTree()
   bst.insert(10)
   bst.insert(5)

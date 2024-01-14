@@ -51,27 +51,37 @@ export class BinarySearchTree {
 
   delete(value) {
     let previousNode = null
+    let direction = 'left'
     let currentNode = this.root
 
     while (true) {
       if (value === currentNode.value) {
-        if (previousNode.right.value === currentNode.value) {
-          previousNode.right = null
+        const hasTwoChildren = currentNode.left && currentNode.right
+        const hasOnlyLeftChild = currentNode.left && !currentNode.right
+        const hasOnlyRightChild = currentNode.right && !currentNode.left
+
+        if (hasTwoChildren) {
+        }
+        if (hasOnlyLeftChild) {
+          previousNode[direction] = currentNode.left
+          currentNode.left = null
+          break
+        }
+        if (hasOnlyRightChild) {
         }
 
-        if (previousNode.left.value === currentNode.value) {
-          previousNode.left = null
-        }
-
+        previousNode[direction] = null
         break
       }
 
       if (value > currentNode.value) {
         previousNode = currentNode
         currentNode = currentNode.right
+        direction = 'right'
       } else {
         previousNode = currentNode
         currentNode = currentNode.left
+        direction = 'left'
       }
     }
   }
