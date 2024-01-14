@@ -77,6 +77,40 @@ export class AVLTree {
     return node
   }
 
+  balanceAndRotate(currentNode) {
+    currentNode.height = this.getNewHeight(currentNode)
+
+    const balanceFactor = this.getBalanceFactor(currentNode)
+
+    if (balanceFactor > 1) {
+      // If balance factor is less then 0 for left child, then it is a LR imbalance
+      // It means the current node is skewed towards the left and the left child is skewed towards the right
+      // It becomes like a zig-zag shape
+      // If that is the case, before doing the right rotation,
+      // since the current node is skewed towards the left
+      // we need to do a left rotation on the left child
+      // Because the left child is skewed towards the right
+      if (this.getBalanceFactor(currentNode.left) < 0) {
+        currentNode.left = this.leftRotate(currentNode.left)
+      }
+      return this.rightRotate(currentNode)
+    } else if (balanceFactor < -1) {
+      // Same logic as above, but for the right child
+      // If the currentNode is imbalanced towards the right
+      // and the right child is imbalanced towards the left
+      // then it is a RL imbalance
+      // It goes down right, then left, imbalanced
+      // We straighten it out by doing a right rotation on the right child
+      // Now it is a RR imbalance and we just do a left rotation on the currentNode
+      if (this.getBalanceFactor(currentNode.right) > 0) {
+        currentNode.right = this.rightRotate(currentNode.right)
+      }
+      return this.leftRotate(currentNode)
+    }
+
+    return currentNode
+  }
+
   insert(value, currentNode = this.root) {
     if (!currentNode) {
       const newNode = new Node(value)
@@ -92,48 +126,7 @@ export class AVLTree {
       currentNode.left = this.insert(value, currentNode.left)
     }
 
-    currentNode.height = this.getNewHeight(currentNode)
-
-    const balanceFactorOfCurrentNode = this.getBalanceFactor(currentNode)
-
-    const isLeftHeavy = balanceFactorOfCurrentNode > 1
-    const isRightHeavy = balanceFactorOfCurrentNode < -1
-
-    if (isLeftHeavy) {
-      // If `value` is less than the value of the left child of the current node,
-      // then it means that the left child of the current node is the newly
-      // inserted node. In this case, we need to perform a right rotation.
-      // This means it is only skewed to the left, and not right.
-      if (value < currentNode.left.value) {
-        // left left case
-        return this.rightRotate(currentNode)
-      } else {
-        // if `value` is greater than the value of the left child of the current
-        // node, then it means that the right child of the left child of the
-        // current node is the newly inserted node. In this case, we need to
-        // perform a left rotation on the left child of the current node, and
-        // then a right rotation on the current node.
-        // This means it is skewed to the left and then to the right.
-        currentNode.left = this.leftRotate(currentNode.left)
-        return this.rightRotate(currentNode)
-      }
-    }
-
-    if (isRightHeavy) {
-      if (value > currentNode.right.value) {
-        // Value is greater means its on the right, this is the essence of BST
-        // Similar explanation as above
-        return this.leftRotate(currentNode)
-      } else {
-        // Similar explanation as above
-        // Value less means its on the left
-        // It becomes a zigzag where it is skewed to the right and then to the left
-        currentNode.right = this.rightRotate(currentNode.right)
-        return this.leftRotate(currentNode)
-      }
-    }
-
-    return currentNode
+    return this.balanceAndRotate(currentNode)
   }
 
   find(value, currentNode = this.root) {
@@ -181,6 +174,6 @@ export class AVLTree {
       )
     }
 
-    return currentNode
+    return this.balanceAndRotate(currentNode)
   }
 }
