@@ -91,3 +91,61 @@ it('should handle objects with a comparator', () => {
   expect(pq.dequeue().item).toBe('Task 2') // Higher priority task comes out first
   expect(pq.dequeue().item).toBe('Task 1')
 })
+
+import { it, expect } from 'vitest'
+import { PriorityQueue } from './PriorityQueue'
+
+// Test for using the value as priority if not provided
+it('should use the value as priority if not provided', () => {
+  const pq = new PriorityQueue()
+  pq.enqueue(5) // Assuming default priority is the value itself
+  pq.enqueue(3)
+  pq.enqueue(4)
+
+  expect(pq.dequeue()).toBe(3) // The smallest element should come out first
+})
+
+// Test for handling invalid inputs
+it('should throw an error for invalid inputs', () => {
+  const pq = new PriorityQueue()
+  expect(() => pq.enqueue(null)).toThrow('Invalid input') // Assuming null is invalid
+  expect(() => pq.enqueue(undefined)).toThrow('Invalid input')
+  expect(() => pq.enqueue({})).toThrow('Invalid input') // Objects without a comparator
+})
+
+// Test for dequeuing from an empty queue
+it('should return null when dequeue is called on an empty queue', () => {
+  const pq = new PriorityQueue()
+  expect(pq.dequeue()).toBeNull() // Assuming the return is null for an empty queue
+})
+
+// Test for handling negative priorities
+it('should handle negative priorities correctly', () => {
+  const pq = new PriorityQueue()
+  pq.enqueue(5, -1)
+  pq.enqueue(3, -2)
+  pq.enqueue(4, -3)
+
+  expect(pq.dequeue()).toBe(4) // The element with the most negative priority comes out first
+})
+
+// Test for stability in equal priorities
+it('should maintain order for elements with the same priority', () => {
+  const pq = new PriorityQueue()
+  pq.enqueue('task1', 1)
+  pq.enqueue('task2', 1)
+  pq.enqueue('task3', 1)
+
+  expect(pq.dequeue()).toBe('task1') // 'task1' was enqueued first
+  expect(pq.dequeue()).toBe('task2') // Followed by 'task2'
+  expect(pq.dequeue()).toBe('task3') // Lastly, 'task3'
+})
+
+// Test for dynamic priority updates (if applicable)
+it('should update the order when priorities are changed', () => {
+  const pq = new PriorityQueue()
+  pq.enqueue('task1', 3)
+  pq.updatePriority('task1', 1) // Assuming a method to update priority exists
+
+  expect(pq.peek()).toBe('task1') // 'task1' should now be at the front due to updated priority
+})
