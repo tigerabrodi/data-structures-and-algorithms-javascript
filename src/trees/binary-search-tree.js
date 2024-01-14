@@ -61,7 +61,7 @@ export class BinarySearchTree {
     } else {
       if (!currentNode.left) {
         return currentNode.right
-      } else if (currentNode.right) {
+      } else if (!currentNode.right) {
         return currentNode.left
       }
 
