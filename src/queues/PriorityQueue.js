@@ -111,6 +111,10 @@ export class PriorityQueue {
     return this.heap.length
   }
 
+  clear() {
+    this.heap = []
+  }
+
   dequeue() {
     if (this.heap.length === 1) {
       const lastNode = this.heap.pop()
