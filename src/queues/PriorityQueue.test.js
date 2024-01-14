@@ -18,7 +18,7 @@ it('should enqueue elements in priority order', () => {
 })
 
 // Test for dequeue operation
-it.only('should dequeue elements in priority order', () => {
+it('should dequeue elements in priority order', () => {
   const pq = new PriorityQueue()
   pq.enqueue(3)
   pq.enqueue(1)
@@ -41,7 +41,7 @@ it('should peek at the highest priority element without removing it', () => {
 })
 
 // Test for priority queue size
-it('should return the correct size of the priority queue', () => {
+it.only('should return the correct size of the priority queue', () => {
   const pq = new PriorityQueue()
   pq.enqueue(5)
   pq.enqueue(10)

@@ -98,6 +98,10 @@ export class MinHeap {
     }
   }
 
+  size() {
+    return this.heap.length
+  }
+
   remove() {
     if (this.heap.length === 1) {
       return this.heap.pop()

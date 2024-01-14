@@ -21,4 +21,8 @@ export class PriorityQueue {
   dequeue() {
     return this.heap.remove()
   }
+
+  size() {
+    return this.heap.size()
+  }
 }
