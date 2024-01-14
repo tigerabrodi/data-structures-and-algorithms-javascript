@@ -87,7 +87,8 @@ export class PriorityQueue {
   }
 
   #bubbleDown(indexToBubbleDown = 0) {
-    while (true) {
+    const hasMoreThanOneChild = this.heap.length > 2
+    while (true && hasMoreThanOneChild) {
       const leftChildIndex = this.#getLeftChildIndex(indexToBubbleDown)
       const rightChildIndex = this.#getRightChildIndex(indexToBubbleDown)
 
@@ -135,7 +136,8 @@ export class PriorityQueue {
 
   dequeue() {
     if (this.heap.length === 1) {
-      return this.heap.pop()
+      const lastNode = this.heap.pop()
+      return lastNode.value
     }
 
     const lastItem = this.heap.pop()
@@ -144,7 +146,7 @@ export class PriorityQueue {
     this.heap[0] = lastItem
     this.#bubbleDown()
 
-    return firstItem
+    return firstItem.value
   }
 
   #getIndexOfLastNonLeafNode() {

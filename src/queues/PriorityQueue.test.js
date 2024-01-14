@@ -8,7 +8,7 @@ it('should create an empty priority queue', () => {
 })
 
 // Test for enqueue operation
-it.only('should enqueue elements in priority order', () => {
+it('should enqueue elements in priority order', () => {
   const pq = new PriorityQueue()
   pq.enqueue(3)
   pq.enqueue(1)
@@ -18,7 +18,7 @@ it.only('should enqueue elements in priority order', () => {
 })
 
 // Test for dequeue operation
-it('should dequeue elements in priority order', () => {
+it.only('should dequeue elements in priority order', () => {
   const pq = new PriorityQueue()
   pq.enqueue(3)
   pq.enqueue(1)
