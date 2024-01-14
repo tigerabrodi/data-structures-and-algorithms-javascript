@@ -2,13 +2,13 @@ import { it, expect } from 'vitest'
 import { PriorityQueue } from './PriorityQueue'
 
 // Test for creating an empty priority queue
-it.only('should create an empty priority queue', () => {
+it('should create an empty priority queue', () => {
   const pq = new PriorityQueue()
   expect(pq.isEmpty()).toBe(true)
 })
 
 // Test for enqueue operation
-it('should enqueue elements in priority order', () => {
+it.only('should enqueue elements in priority order', () => {
   const pq = new PriorityQueue()
   pq.enqueue(3)
   pq.enqueue(1)
