@@ -48,4 +48,31 @@ export class BinarySearchTree {
       return this.find(value, currentNode.left)
     }
   }
+
+  delete(value) {
+    let previousNode = null
+    let currentNode = this.root
+
+    while (true) {
+      if (value === currentNode.value) {
+        if (previousNode.right.value === currentNode.value) {
+          previousNode.right = null
+        }
+
+        if (previousNode.left.value === currentNode.value) {
+          previousNode.left = null
+        }
+
+        break
+      }
+
+      if (value > currentNode.value) {
+        previousNode = currentNode
+        currentNode = currentNode.right
+      } else {
+        previousNode = currentNode
+        currentNode = currentNode.left
+      }
+    }
+  }
 }

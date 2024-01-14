@@ -23,7 +23,7 @@ it('should insert elements and maintain BST properties', () => {
 })
 
 // Test for finding elements
-it.only('should find elements in the BST', () => {
+it('should find elements in the BST', () => {
   const bst = new BinarySearchTree()
   bst.insert(10)
   bst.insert(5)
@@ -36,7 +36,7 @@ it.only('should find elements in the BST', () => {
 })
 
 // Test for deleting a leaf node (no children)
-it('should delete a leaf node correctly', () => {
+it.only('should delete a leaf node correctly', () => {
   const bst = new BinarySearchTree()
   bst.insert(10)
   bst.insert(5)
