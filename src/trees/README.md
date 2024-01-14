@@ -124,3 +124,48 @@ It's a recursive solution where we either go down right or left depending on whe
 We can return the recursive solution because our base case is when we find the value we're looking for. If we don't find it, we'll eventually hit a null node and return null.
 
 Big O: O(log n)
+
+## insert
+
+```js
+  insert(value, currentNode = this.root) {
+    if (!currentNode) {
+      const newNode = new Node(value)
+      if (!this.root) {
+        this.root = newNode
+      }
+      return newNode
+    }
+
+    if (value > currentNode.value) {
+      currentNode.right = this.insert(value, currentNode.right)
+    } else {
+      currentNode.left = this.insert(value, currentNode.left)
+    }
+
+    return currentNode
+  }
+```
+
+This works in a similar way to `find`. The base case essentially tells us there is no node at the current position, so we can insert a new node there. We have to traverse down the right way like in `find` to find the correct position to insert the new node.
+
+To visualize how it works: When we reach a parent whose right or left child is null, we will return a new node in the next recursive call.
+
+So in visualized pseudo code that would be:
+
+```
+if (value to insert > value at currentNode)
+    currentNode.right = (insert value in right subtree)
+else
+    currentNode.left = (insert value in left subtree)
+```
+
+Essentially, we keep traversing down till we find a null node, there we insert a new node.
+
+Each call updates its respective subtree (if necessary) and returns the current node, maintaining the overall tree structure.
+
+You could say we're mutating the right and left trees of the current node by assigning them to the recursive call.
+
+In the end, we return the entire tree with the new node inserted.
+
+Big O: O(log n)
