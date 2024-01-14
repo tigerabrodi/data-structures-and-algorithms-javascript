@@ -68,6 +68,9 @@ export class BinarySearchTree {
           break
         }
         if (hasOnlyRightChild) {
+          previousNode[direction] = currentNode.right
+          currentNode.right = null
+          break
         }
 
         previousNode[direction] = null
