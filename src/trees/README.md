@@ -96,3 +96,31 @@ A binary search tree is a binary tree in which the value of left child is less t
 This is nice because it allows us to search for a value in O(log n) time. Because the tree is sorted, we can use a binary search to find the value we're looking for.
 
 e.g. If we're looking for a value, we can cut out half of the tree by comparing the value we're looking for to the root node. If it's less than the root node, we can ignore the right subtree. If it's greater than the root node, we can ignore the left subtree.
+
+## find
+
+```js
+  find(value, currentNode = this.root) {
+    if (!currentNode) {
+      return null
+    }
+
+    if (currentNode.value === value) {
+      return currentNode
+    }
+
+    if (value > currentNode.value) {
+      return this.find(value, currentNode.right)
+    } else {
+      return this.find(value, currentNode.left)
+    }
+  }
+```
+
+Let's break down how find works.
+
+It's a recursive solution where we either go down right or left depending on whether the value we're looking for is greater than or less than the current node's value.
+
+We can return the recursive solution because our base case is when we find the value we're looking for. If we don't find it, we'll eventually hit a null node and return null.
+
+Big O: O(log n)
