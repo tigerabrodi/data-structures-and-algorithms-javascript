@@ -65,7 +65,7 @@ export class BinarySearchTree {
         return currentNode.left
       }
 
-      let minFromRightSubTree = currentNode
+      let minFromRightSubTree = currentNode.right
 
       while (minFromRightSubTree.left) {
         minFromRightSubTree = minFromRightSubTree.left
