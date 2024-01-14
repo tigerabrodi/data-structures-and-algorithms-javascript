@@ -49,43 +49,35 @@ export class BinarySearchTree {
     }
   }
 
-  delete(value) {
-    let previousNode = null
-    let direction = 'left'
-    let currentNode = this.root
-
-    while (true) {
-      if (value === currentNode.value) {
-        const hasTwoChildren = currentNode.left && currentNode.right
-        const hasOnlyLeftChild = currentNode.left && !currentNode.right
-        const hasOnlyRightChild = currentNode.right && !currentNode.left
-
-        if (hasTwoChildren) {
-        }
-        if (hasOnlyLeftChild) {
-          previousNode[direction] = currentNode.left
-          currentNode.left = null
-          break
-        }
-        if (hasOnlyRightChild) {
-          previousNode[direction] = currentNode.right
-          currentNode.right = null
-          break
-        }
-
-        previousNode[direction] = null
-        break
-      }
-
-      if (value > currentNode.value) {
-        previousNode = currentNode
-        currentNode = currentNode.right
-        direction = 'right'
-      } else {
-        previousNode = currentNode
-        currentNode = currentNode.left
-        direction = 'left'
-      }
+  delete(value, currentNode = this.root) {
+    if (!currentNode) {
+      return currentNode
     }
+
+    if (value > currentNode.value) {
+      currentNode.right = this.delete(value, currentNode.right)
+    } else if (value < currentNode.value) {
+      currentNode.left = this.delete(value, currentNode.left)
+    } else {
+      if (!currentNode.left) {
+        return currentNode.right
+      } else if (currentNode.right) {
+        return currentNode.left
+      }
+
+      let minFromRightSubTree = currentNode
+
+      while (minFromRightSubTree.left) {
+        minFromRightSubTree = minFromRightSubTree.left
+      }
+
+      currentNode.value = minFromRightSubTree.value
+      currentNode.right = this.delete(
+        minFromRightSubTree.value,
+        currentNode.right
+      )
+    }
+
+    return currentNode
   }
 }
