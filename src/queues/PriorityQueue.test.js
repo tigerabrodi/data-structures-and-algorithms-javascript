@@ -18,7 +18,7 @@ it('should enqueue elements in priority order', () => {
 })
 
 // Test for dequeue operation
-it.only('should dequeue elements in priority order', () => {
+it('should dequeue elements in priority order', () => {
   const pq = new PriorityQueue()
   pq.enqueue(3)
   pq.enqueue(1)
@@ -51,7 +51,7 @@ it('should return the correct size of the priority queue', () => {
 })
 
 // Test for handling different priorities
-it('should handle different priorities correctly', () => {
+it.only('should handle different priorities correctly', () => {
   const pq = new PriorityQueue()
   pq.enqueue(5, 2) // Value 5 with priority 2
   pq.enqueue(10, 1) // Value 10 with priority 1 (higher priority)

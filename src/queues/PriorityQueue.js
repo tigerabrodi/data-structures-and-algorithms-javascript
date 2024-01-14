@@ -1,5 +1,3 @@
-import { MinHeap } from '../heap/min-heap'
-
 class Node {
   constructor(value, priority) {
     this.value = value
@@ -38,27 +36,14 @@ export class PriorityQueue {
       const valueOfInsertedNode = this.heap[indexOfInsertedNode]
       const valueOfParentNode = this.heap[indexOfParentNode]
 
-      console.log({
-        valueOfInsertedNode,
-        valueOfParentNode,
-        indexOfParentNode,
-        indexOfInsertedNode,
-      })
-
       const priorityOfInsertedNode = valueOfInsertedNode.priority
       const priorityOfParentNode = valueOfParentNode.priority
 
-      const isParentHigherPriority =
+      const isParentLowerPriority =
         priorityOfParentNode > priorityOfInsertedNode
-      const isParentEqualPriority =
-        priorityOfParentNode === priorityOfInsertedNode
-      const isParentValueGreaterThanInsertedValue =
-        valueOfParentNode.value > valueOfInsertedNode.value
+      valueOfParentNode.value > valueOfInsertedNode.value
 
-      if (
-        isParentHigherPriority ||
-        (isParentEqualPriority && isParentValueGreaterThanInsertedValue)
-      ) {
+      if (isParentLowerPriority) {
         this.#swap(indexOfInsertedNode, indexOfParentNode)
 
         let tempIndex = indexOfParentNode
@@ -86,47 +71,39 @@ export class PriorityQueue {
     return 2 * parentIndex + 2
   }
 
-  #bubbleDown(indexToBubbleDown = 0) {
-    const hasMoreThanOneChild = this.heap.length > 2
-    while (true && hasMoreThanOneChild) {
-      const leftChildIndex = this.#getLeftChildIndex(indexToBubbleDown)
-      const rightChildIndex = this.#getRightChildIndex(indexToBubbleDown)
+  #bubbleDown() {
+    let currentIndex = 0
 
-      const currentValue = this.heap[indexToBubbleDown]
-      const leftChildValue = this.heap[leftChildIndex]
-      const rightChildValue = this.heap[rightChildIndex]
+    while (true) {
+      const leftChildIndex = this.#getLeftChildIndex(currentIndex)
+      const rightChildIndex = this.#getRightChildIndex(currentIndex)
+      let smallestChildIndex = currentIndex
 
-      const isCurrentLessThanBothChildren =
-        currentValue.priority < leftChildValue.priority &&
-        currentValue.priority < rightChildValue.priority
+      const hasLeftChild = leftChildIndex < this.heap.length
+      const hasRightChild = rightChildIndex < this.heap.length
 
-      if (isCurrentLessThanBothChildren) {
-        if (leftChildValue.priority > rightChildValue.priority) {
-          this.#swap(leftChildIndex, indexToBubbleDown)
-          indexToBubbleDown = leftChildIndex
-          continue
-        }
-
-        if (rightChildValue.priority > leftChildValue.priority) {
-          this.#swap(rightChildIndex, indexToBubbleDown)
-          indexToBubbleDown = rightChildIndex
-          continue
-        }
+      if (
+        hasLeftChild &&
+        this.heap[leftChildIndex].priority <
+          this.heap[smallestChildIndex].priority
+      ) {
+        smallestChildIndex = leftChildIndex
       }
 
-      if (leftChildValue.priority > currentValue.priority) {
-        this.#swap(leftChildIndex, indexToBubbleDown)
-        indexToBubbleDown = leftChildIndex
-        continue
+      if (
+        hasRightChild &&
+        this.heap[rightChildIndex].priority <
+          this.heap[smallestChildIndex].priority
+      ) {
+        smallestChildIndex = rightChildIndex
       }
 
-      if (rightChildValue.priority > currentValue.priority) {
-        this.#swap(rightChildIndex, indexToBubbleDown)
-        indexToBubbleDown = rightChildIndex
-        continue
+      if (smallestChildIndex === currentIndex) {
+        break
       }
 
-      break
+      this.#swap(currentIndex, smallestChildIndex)
+      currentIndex = smallestChildIndex
     }
   }
 
