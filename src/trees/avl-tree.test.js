@@ -8,7 +8,7 @@ it('should create an empty AVL tree', () => {
 })
 
 // Test for inserting elements
-it.only('should insert elements and maintain balance', () => {
+it('should insert elements and maintain balance', () => {
   const avl = new AVLTree()
   avl.insert(3)
   avl.insert(2)
@@ -66,4 +66,15 @@ it('should perform right-left rotation for RL imbalance', () => {
   expect(newRoot.value).toBe(2) // Right-left rotation should make 2 the root
   expect(newRoot.left.value).toBe(1)
   expect(newRoot.right.value).toBe(3)
+})
+
+it('should delete a leaf node correctly', () => {
+  const avl = new AVLTree()
+  avl.insert(10)
+  avl.insert(5)
+  avl.insert(15)
+  avl.delete(15)
+
+  expect(avl.find(15)).toBeNull()
+  expect(avl.find(10).right).toBeNull()
 })
