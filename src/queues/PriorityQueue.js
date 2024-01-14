@@ -17,4 +17,8 @@ export class PriorityQueue {
   enqueue(value) {
     this.heap.insert(value)
   }
+
+  dequeue() {
+    return this.heap.remove()
+  }
 }
