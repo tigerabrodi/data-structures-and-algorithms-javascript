@@ -9,7 +9,7 @@ it('should create an empty binary search tree', () => {
 })
 
 // Test for inserting elements
-it.only('should insert elements and maintain BST properties', () => {
+it('should insert elements and maintain BST properties', () => {
   const bst = new BinarySearchTree()
   bst.insert(10)
   bst.insert(5)
@@ -23,7 +23,7 @@ it.only('should insert elements and maintain BST properties', () => {
 })
 
 // Test for finding elements
-it('should find elements in the BST', () => {
+it.only('should find elements in the BST', () => {
   const bst = new BinarySearchTree()
   bst.insert(10)
   bst.insert(5)
