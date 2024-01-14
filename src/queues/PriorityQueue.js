@@ -5,8 +5,9 @@ class Node {
   }
 }
 export class PriorityQueue {
-  constructor() {
+  constructor(comparator) {
     this.heap = []
+    this.comparator = comparator
   }
 
   isEmpty() {
@@ -58,6 +59,16 @@ export class PriorityQueue {
   }
 
   enqueue(value, priority = value) {
+    if (!value) {
+      throw new Error('Invalid input')
+    }
+
+    const isObject = typeof value === 'object' && value !== null
+
+    if (isObject && !this.comparator) {
+      throw new Error('Invalid input')
+    }
+
     const newNode = new Node(value, priority)
     this.heap.push(newNode)
     this.#bubbleUp()

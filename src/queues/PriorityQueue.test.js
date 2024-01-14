@@ -73,7 +73,7 @@ it('should maintain order for elements with the same priority', () => {
 })
 
 // Test for clearing the priority queue
-it.only('should clear the priority queue', () => {
+it('should clear the priority queue', () => {
   const pq = new PriorityQueue()
   pq.enqueue(10)
   pq.enqueue(20)
@@ -92,9 +92,6 @@ it('should handle objects with a comparator', () => {
   expect(pq.dequeue().item).toBe('Task 1')
 })
 
-import { it, expect } from 'vitest'
-import { PriorityQueue } from './PriorityQueue'
-
 // Test for using the value as priority if not provided
 it('should use the value as priority if not provided', () => {
   const pq = new PriorityQueue()
@@ -106,7 +103,7 @@ it('should use the value as priority if not provided', () => {
 })
 
 // Test for handling invalid inputs
-it('should throw an error for invalid inputs', () => {
+it.only('should throw an error for invalid inputs', () => {
   const pq = new PriorityQueue()
   expect(() => pq.enqueue(null)).toThrow('Invalid input') // Assuming null is invalid
   expect(() => pq.enqueue(undefined)).toThrow('Invalid input')
