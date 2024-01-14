@@ -4,10 +4,15 @@ class Node {
     this.priority = priority
   }
 }
+
 export class PriorityQueue {
-  constructor(comparator) {
+  constructor(
+    comparator = (a, b) => a.priority - b.priority,
+    valueExtractor = (node) => node.value
+  ) {
     this.heap = []
     this.comparator = comparator
+    this.valueExtractor = valueExtractor
   }
 
   isEmpty() {
@@ -15,7 +20,7 @@ export class PriorityQueue {
   }
 
   peek() {
-    return this.heap[0].value
+    return this.isEmpty() ? null : this.valueExtractor(this.heap[0])
   }
 
   #swap(index1, index2) {
@@ -29,47 +34,27 @@ export class PriorityQueue {
   }
 
   #bubbleUp() {
-    let indexOfInsertedNode = this.heap.length - 1
-    let indexOfParentNode = this.#getParentIndex(indexOfInsertedNode)
-
-    // Make sure we're not at the root node and that the parent value is greater than the child value
-    while (true && indexOfParentNode >= 0) {
-      const valueOfInsertedNode = this.heap[indexOfInsertedNode]
-      const valueOfParentNode = this.heap[indexOfParentNode]
-
-      const priorityOfInsertedNode = valueOfInsertedNode.priority
-      const priorityOfParentNode = valueOfParentNode.priority
-
-      const isParentLowerPriority =
-        priorityOfParentNode > priorityOfInsertedNode
-      valueOfParentNode.value > valueOfInsertedNode.value
-
-      if (isParentLowerPriority) {
-        this.#swap(indexOfInsertedNode, indexOfParentNode)
-
-        let tempIndex = indexOfParentNode
-        indexOfInsertedNode = indexOfParentNode
-        indexOfParentNode = this.#getParentIndex(tempIndex)
-
-        continue
+    let index = this.heap.length - 1
+    while (index > 0) {
+      const parentIndex = this.#getParentIndex(index)
+      if (this.comparator(this.heap[index], this.heap[parentIndex]) < 0) {
+        this.#swap(index, parentIndex)
+        index = parentIndex
+      } else {
+        break
       }
-
-      break
     }
   }
 
   enqueue(value, priority = value) {
-    if (!value) {
+    if (value == null) {
       throw new Error('Invalid input')
     }
 
-    const isObject = typeof value === 'object' && value !== null
+    const effectivePriority =
+      typeof value === 'object' ? value.priority : priority
 
-    if (isObject && !this.comparator) {
-      throw new Error('Invalid input')
-    }
-
-    const newNode = new Node(value, priority)
+    const newNode = new Node(value, effectivePriority)
     this.heap.push(newNode)
     this.#bubbleUp()
   }
@@ -88,33 +73,28 @@ export class PriorityQueue {
     while (true) {
       const leftChildIndex = this.#getLeftChildIndex(currentIndex)
       const rightChildIndex = this.#getRightChildIndex(currentIndex)
-      let smallestChildIndex = currentIndex
-
-      const hasLeftChild = leftChildIndex < this.heap.length
-      const hasRightChild = rightChildIndex < this.heap.length
+      let smallest = currentIndex
 
       if (
-        hasLeftChild &&
-        this.heap[leftChildIndex].priority <
-          this.heap[smallestChildIndex].priority
+        leftChildIndex < this.heap.length &&
+        this.comparator(this.heap[leftChildIndex], this.heap[smallest]) < 0
       ) {
-        smallestChildIndex = leftChildIndex
+        smallest = leftChildIndex
       }
 
       if (
-        hasRightChild &&
-        this.heap[rightChildIndex].priority <
-          this.heap[smallestChildIndex].priority
+        rightChildIndex < this.heap.length &&
+        this.comparator(this.heap[rightChildIndex], this.heap[smallest]) < 0
       ) {
-        smallestChildIndex = rightChildIndex
+        smallest = rightChildIndex
       }
 
-      if (smallestChildIndex === currentIndex) {
+      if (smallest !== currentIndex) {
+        this.#swap(currentIndex, smallest)
+        currentIndex = smallest
+      } else {
         break
       }
-
-      this.#swap(currentIndex, smallestChildIndex)
-      currentIndex = smallestChildIndex
     }
   }
 
@@ -131,33 +111,14 @@ export class PriorityQueue {
       return null
     }
 
-    if (this.heap.length === 1) {
-      const lastNode = this.heap.pop()
-      return lastNode.value
-    }
-
-    const lastItem = this.heap.pop()
     const firstItem = this.heap[0]
+    const lastItem = this.heap.pop()
 
-    this.heap[0] = lastItem
-    this.#bubbleDown()
-
-    return firstItem.value
-  }
-
-  #getIndexOfLastNonLeafNode() {
-    const indexOfLastItem = this.heap.length - 1
-    return this.#getParentIndex(indexOfLastItem)
-  }
-
-  heapify(array) {
-    this.heap = array
-
-    let indexOfLastNonLeafNode = this.#getIndexOfLastNonLeafNode()
-
-    while (indexOfLastNonLeafNode >= 0) {
-      this.#bubbleDown(indexOfLastNonLeafNode)
-      indexOfLastNonLeafNode--
+    if (!this.isEmpty()) {
+      this.heap[0] = lastItem
+      this.#bubbleDown()
     }
+
+    return this.valueExtractor(firstItem)
   }
 }

@@ -8,7 +8,7 @@ it('should create an empty priority queue', () => {
 })
 
 // Test for enqueue operation
-it('should enqueue elements in priority order', () => {
+it.only('should enqueue elements in priority order', () => {
   const pq = new PriorityQueue()
   pq.enqueue(3)
   pq.enqueue(1)
@@ -84,7 +84,10 @@ it('should clear the priority queue', () => {
 
 // Test for handling complex data types
 it('should handle objects with a comparator', () => {
-  const pq = new PriorityQueue((a, b) => a.priority - b.priority)
+  const pq = new PriorityQueue(
+    (a, b) => a.priority - b.priority,
+    (node) => node.item
+  )
   pq.enqueue({ item: 'Task 1', priority: 2 })
   pq.enqueue({ item: 'Task 2', priority: 1 })
 
@@ -111,7 +114,7 @@ it('should throw an error for invalid inputs', () => {
 })
 
 // Test for dequeuing from an empty queue
-it.only('should return null when dequeue is called on an empty queue', () => {
+it('should return null when dequeue is called on an empty queue', () => {
   const pq = new PriorityQueue()
   expect(pq.dequeue()).toBeNull() // Assuming the return is null for an empty queue
 })
