@@ -46,3 +46,11 @@ it('should correctly heapify an array', () => {
   minHeap.heapify([3, 1, 6])
   expect(minHeap.peek()).toBe(1)
 })
+
+it('should spit out size of heap', () => {
+  const minHeap = new MinHeap()
+  minHeap.insert(3)
+  minHeap.insert(1)
+  minHeap.insert(6)
+  expect(minHeap.size()).toBe(3)
+})
