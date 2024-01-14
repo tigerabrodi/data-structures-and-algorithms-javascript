@@ -236,7 +236,7 @@ Let's look at two children.
 ### Deleting node with both left and right children
 
 ```js
-let minFromRightSubTree = currentNode
+let minFromRightSubTree = currentNode.right
 
 while (minFromRightSubTree.left) {
   minFromRightSubTree = minFromRightSubTree.left
@@ -257,3 +257,15 @@ Once we've found it, we can replace the currentNode's value with the minFromRigh
 However, we're not done yet. We need to delete the minFromRightSubTree node, which is the node we just replaced the currentNode with. Which means we have to call delete on the right subtree of the currentNode, passing in the minFromRightSubTree's value.
 
 In the end, the case for the `minFromRightSubTree` will be either it has no children or a right child. And both of those cases are handled by the previous code logic.
+
+# AVL Trees
+
+AVL trees are a type of self-balancing binary search tree. They are named after their inventors, Adelson-Velsky and Landis.
+
+The idea is to maintain a balance factor for each node in the tree. The balance factor is the difference between the height of the left subtree and the right subtree.
+
+The balance factor of any node of an AVL tree is in the integer range [-1, 1].
+
+If the balance factor of any node is -1, 0 or 1, the tree is considered balanced.
+
+If the balance factor of any node is -2 or 2, the tree is considered unbalanced, and we need to do some rotations to balance it.
