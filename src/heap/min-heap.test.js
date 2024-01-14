@@ -28,6 +28,18 @@ it('should remove the root element and maintain min heap property', () => {
   expect(minHeap.peek()).toBe(3)
 })
 
+it('should remove elements in priority order', () => {
+  const minHeap = new MinHeap()
+  minHeap.insert(3)
+  minHeap.insert(1)
+  minHeap.insert(2)
+
+  expect(minHeap.remove()).toBe(1)
+  expect(minHeap.remove()).toBe(2)
+  expect(minHeap.remove()).toBe(3)
+  expect(minHeap.isEmpty()).toBe(true)
+})
+
 // Test for heapify
 it('should correctly heapify an array', () => {
   const minHeap = new MinHeap()

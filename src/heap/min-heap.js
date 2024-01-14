@@ -99,8 +99,11 @@ export class MinHeap {
   }
 
   remove() {
-    const indexOfLastItem = this.heap.length - 1
-    const lastItem = this.heap[indexOfLastItem]
+    if (this.heap.length === 1) {
+      return this.heap.pop()
+    }
+
+    const lastItem = this.heap.pop()
     const firstItem = this.heap[0]
 
     this.heap[0] = lastItem
