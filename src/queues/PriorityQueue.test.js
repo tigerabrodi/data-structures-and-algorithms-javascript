@@ -103,7 +103,7 @@ it('should use the value as priority if not provided', () => {
 })
 
 // Test for handling invalid inputs
-it.only('should throw an error for invalid inputs', () => {
+it('should throw an error for invalid inputs', () => {
   const pq = new PriorityQueue()
   expect(() => pq.enqueue(null)).toThrow('Invalid input') // Assuming null is invalid
   expect(() => pq.enqueue(undefined)).toThrow('Invalid input')
@@ -111,7 +111,7 @@ it.only('should throw an error for invalid inputs', () => {
 })
 
 // Test for dequeuing from an empty queue
-it('should return null when dequeue is called on an empty queue', () => {
+it.only('should return null when dequeue is called on an empty queue', () => {
   const pq = new PriorityQueue()
   expect(pq.dequeue()).toBeNull() // Assuming the return is null for an empty queue
 })
