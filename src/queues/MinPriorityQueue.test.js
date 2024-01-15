@@ -41,22 +41,22 @@ it('should peek at the highest priority element without removing it', () => {
 })
 
 // // Test for priority queue size
-// it('should return the correct size of the priority queue', () => {
-//   const pq = new MinPriorityQueue()
-//   pq.enqueue('NodeA', 1)
-//   pq.enqueue('NodeB', 2)
-//   pq.enqueue('NodeC', 3)
+it('should return the correct size of the priority queue', () => {
+  const pq = new MinPriorityQueue()
+  pq.enqueue('NodeA', 1)
+  pq.enqueue('NodeB', 2)
+  pq.enqueue('NodeC', 3)
 
-//   expect(pq.size()).toBe(3)
-// })
+  expect(pq.size()).toBe(3)
+})
 
 // // Test for empty queue behavior
-// it('should handle operations on an empty queue correctly', () => {
-//   const pq = new MinPriorityQueue()
+it('should handle operations on an empty queue correctly', () => {
+  const pq = new MinPriorityQueue()
 
-//   expect(pq.dequeue()).toBeNull()
-//   expect(pq.peek()).toBeNull()
-// })
+  expect(pq.dequeue()).toBeNull()
+  expect(pq.peek()).toBeNull()
+})
 
 // // Test for handling different data types
 // it('should handle different data types as values', () => {
