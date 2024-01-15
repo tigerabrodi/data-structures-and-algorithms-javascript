@@ -31,14 +31,14 @@ it('should dequeue elements in priority order', () => {
 })
 
 // // Test for peek operation
-// it('should peek at the highest priority element without removing it', () => {
-//   const pq = new MinPriorityQueue()
-//   pq.enqueue('NodeA', 2)
-//   pq.enqueue('NodeB', 1)
+it('should peek at the highest priority element without removing it', () => {
+  const pq = new MinPriorityQueue()
+  pq.enqueue('NodeA', 2)
+  pq.enqueue('NodeB', 1)
 
-//   expect(pq.peek()).toBe('NodeB')
-//   expect(pq.isEmpty()).toBe(false)
-// })
+  expect(pq.peek()).toBe('NodeB')
+  expect(pq.isEmpty()).toBe(false)
+})
 
 // // Test for priority queue size
 // it('should return the correct size of the priority queue', () => {
