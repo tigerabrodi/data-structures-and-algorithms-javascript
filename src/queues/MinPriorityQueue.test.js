@@ -59,23 +59,23 @@ it('should handle operations on an empty queue correctly', () => {
 })
 
 // // Test for handling different data types
-// it('should handle different data types as values', () => {
-//   const pq = new MinPriorityQueue()
-//   pq.enqueue(10, 2)
-//   pq.enqueue('Test', 3)
-//   pq.enqueue({ id: 1, name: 'Object' }, 1)
+it('should handle different data types as values', () => {
+  const pq = new MinPriorityQueue()
+  pq.enqueue(10, 2)
+  pq.enqueue('Test', 3)
+  pq.enqueue({ id: 1, name: 'Object' }, 1)
 
-//   expect(pq.dequeue()).toEqual({ id: 1, name: 'Object' })
-//   expect(pq.dequeue()).toBe(10)
-//   expect(pq.dequeue()).toBe('Test')
-// })
+  expect(pq.dequeue()).toEqual({ id: 1, name: 'Object' })
+  expect(pq.dequeue()).toBe(10)
+  expect(pq.dequeue()).toBe('Test')
+})
 
 // // Test for handling elements with the same priority
-// it('should maintain order for elements with the same priority', () => {
-//   const pq = new MinPriorityQueue()
-//   pq.enqueue('NodeA', 1)
-//   pq.enqueue('NodeB', 1)
+it('should maintain order for elements with the same priority', () => {
+  const pq = new MinPriorityQueue()
+  pq.enqueue('NodeA', 1)
+  pq.enqueue('NodeB', 1)
 
-//   expect(pq.dequeue()).toBe('NodeA') // As 'NodeA' was enqueued first
-//   expect(pq.dequeue()).toBe('NodeB')
-// })
+  expect(pq.dequeue()).toBe('NodeA') // As 'NodeA' was enqueued first
+  expect(pq.dequeue()).toBe('NodeB')
+})
