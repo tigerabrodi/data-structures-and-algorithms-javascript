@@ -167,4 +167,15 @@ export class MinPriorityQueue {
       indexOfLastNonLeafNode--
     }
   }
+
+  updatePriority(value, priority) {
+    const nodeIndex = this.heap.findIndex((node) => node.value === value)
+    if (nodeIndex === -1) {
+      return null
+    }
+
+    this.heap[nodeIndex].priority = priority
+    this.#bubbleUp()
+    this.#bubbleDown()
+  }
 }
