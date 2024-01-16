@@ -6,8 +6,6 @@ This repo is where I implement and document data structures and algorithms.
 
 Data Structures and Algorithms focuses on problem solving.
 
-Foundations of programming are required.
-
 # What are Data Structures?
 
 Coding is just manipulating data in a way so that you can accomplish a task.
