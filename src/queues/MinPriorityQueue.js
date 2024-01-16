@@ -32,8 +32,7 @@ export class MinPriorityQueue {
     return Math.floor((childIndex - 1) / 2)
   }
 
-  #bubbleUp() {
-    let indexOfInsertedNode = this.heap.length - 1
+  #bubbleUp(indexOfInsertedNode = this.heap.length - 1) {
     let indexOfParentNode = this.#getParentIndex(indexOfInsertedNode)
 
     const isNotFirstElement = indexOfInsertedNode > 0
@@ -174,8 +173,19 @@ export class MinPriorityQueue {
       return null
     }
 
-    this.heap[nodeIndex].priority = priority
-    this.#bubbleUp()
-    this.#bubbleDown()
+    const hasPriorityIncreased = priority <= this.heap[nodeIndex].priority
+    const hasPriorityDecreased = priority >= this.heap[nodeIndex].priority
+
+    if (hasPriorityIncreased) {
+      this.heap[nodeIndex].priority = priority
+      this.#bubbleUp(nodeIndex)
+      return
+    }
+
+    if (hasPriorityDecreased) {
+      this.heap[nodeIndex].priority = priority
+      this.#bubbleDown(nodeIndex)
+      return
+    }
   }
 }
