@@ -1,3 +1,5 @@
+import { MinPriorityQueue } from '../queues/MinPriorityQueue'
+
 class Node {
   constructor(value, weight) {
     this.value = value
@@ -113,63 +115,55 @@ export class WeightedGraph {
   }
 
   findShortestPathDijkstra(start, end) {
-    // We need all keys of the graph as an array
-    const unvisited = [...this.list.keys()]
+    const distances = new Map()
+    const previousNodes = new Map()
+    const pq = new MinPriorityQueue()
+    const visited = new Set()
 
-    const distances = {
-      [start]: 0,
-    }
-
-    const previousNodes = {}
-
-    // All nodes except the start node have a distance of Infinity
-    // I had a bug here where I was setting the distance of the start node to Infinity, which was causing the algorithm to fail lol
-    unvisited.forEach((edge) => {
-      if (edge !== start) {
-        distances[edge] = Infinity
-      }
-
-      // Here we set the previous node of each node to null
-      previousNodes[edge] = null
+    // Initialize distances and priority queue
+    this.list.forEach((_, vertex) => {
+      distances.set(vertex, vertex === start ? 0 : Infinity)
+      previousNodes.set(vertex, null)
+      pq.enqueue(vertex, distances.get(vertex))
     })
 
-    while (unvisited.length) {
-      const keyOfNodeWithSmallestDistance = this.#findNodeWithSmallestDistance(
-        unvisited,
-        distances
-      )
+    while (pq.size()) {
+      const currentNode = pq.dequeue()
+      visited.add(currentNode)
 
-      if (!keyOfNodeWithSmallestDistance) {
-        break
-      }
+      if (currentNode === end) break
 
-      // Remove the node from the unvisited set
-      unvisited.splice(unvisited.indexOf(keyOfNodeWithSmallestDistance), 1)
-
-      const edgesForNode = this.list.get(keyOfNodeWithSmallestDistance)
-
+      const edgesForNode = this.list.get(currentNode)
       edgesForNode.forEach((edge) => {
-        const distanceToNeighbor =
-          distances[keyOfNodeWithSmallestDistance] + edge.weight
+        if (!visited.has(edge.value)) {
+          const distanceToNeighbor = distances.get(currentNode) + edge.weight
+          const currentNeighborDistance = distances.get(edge.value)
 
-        // if isDistanceToNeighborShorter, it means we have found a shorter path to the neighbor, so we need to update the distances and previous nodes objects, previous nodes because the path to the neighbor is from a new node
-        const isDistanceToNeighborShorter =
-          distanceToNeighbor < distances[edge.value]
-        if (isDistanceToNeighborShorter) {
-          distances[edge.value] = distanceToNeighbor
-          previousNodes[edge.value] = keyOfNodeWithSmallestDistance
+          if (distanceToNeighbor < currentNeighborDistance) {
+            distances.set(edge.value, distanceToNeighbor)
+            previousNodes.set(edge.value, currentNode)
+
+            // Update priority in the priority queue
+            pq.updatePriority(edge.value, distanceToNeighbor)
+          }
         }
       })
     }
 
+    // Reconstruct the path from end to start
     let currentNode = end
     const path = []
 
-    // Loop through the previous nodes object until we reach the start node
+    // Check if a path exists
+    const isNoPathFound =
+      previousNodes.get(currentNode) === null && currentNode !== start
+    if (isNoPathFound) {
+      return []
+    }
+
     while (currentNode !== start) {
-      // Add the current node to the start path
       path.unshift(currentNode)
-      currentNode = previousNodes[currentNode]
+      currentNode = previousNodes.get(currentNode)
     }
 
     path.unshift(start)
