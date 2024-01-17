@@ -2,6 +2,21 @@
 
 Recursion is when a function calls itself. It is a useful technique for solving problems that can be broken down into smaller problems of the same type.
 
+We have two cases:
+
+- Base case: The function does not call itself. It is the stopping point.
+- Recursive case: The function calls itself.
+
+Both cases are important. If we don't have a base case, we'll have an infinite loop. If we don't have a recursive case, we'll never call the function.
+
+# Recursive cases
+
+There is a difference between having multiple recursive cases and multiple recursive calls.
+
+Multiple recursive cases means we have multiple if statements that call the function recursively.
+
+Multiple recursive calls means we call the function recursively multiple times in the same if statement.
+
 # Factorial
 
 ```js
