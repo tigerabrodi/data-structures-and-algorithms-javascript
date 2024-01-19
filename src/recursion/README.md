@@ -45,3 +45,17 @@ It's like the first number is a person asking another person.
 That's the end of the story.
 
 How recursion works is the last function call is the first one to return. So the last function call is `factorial(1)` and it returns 1. Then `factorial(2)` returns 2 _ 1, then `factorial(3)` returns 3 _ 2, and so on.
+
+# From recursion to iteration
+
+Transforming a recursive function into an iterative one requires understanding how the call stack works.
+
+We need to identify the base case and how we're gonna break down the problem into smaller problems.
+
+In recursion, the call stack is used to store the function calls. The last function call is the first one to return. That's why we don't have to store what the functions return in a variable.
+
+You've to determine what information is being carried across recursive calls.
+
+Use the identified data structure to store and retrieve the state information during each iteration of the loop.
+
+Ensure that each iteration correctly modifies the state to mirror what would happen in a recursive call.
