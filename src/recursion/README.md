@@ -103,3 +103,29 @@ Memoization is an optimization technique used primarily in recursive algorithms 
 **Store Results:** After computing the result for a set of inputs, store this result in the cache before returning it.
 
 **Pass the Cache in Recursive Calls:** Ensure that the cache is accessible in each recursive call, either by passing it as an argument or using a closure.
+
+# Divide and Conquer
+
+Divide and conquer is a technique for solving problems by breaking them down into smaller subproblems. It is useful when these subproblems are similar to the original problem, but smaller in size.
+
+The steps are:
+
+1. Divide: Break the problem down into smaller subproblems.
+2. Conquer: Solve the subproblems recursively. If they are small enough, solve the subproblems as base cases.
+3. Combine: Take the solutions to the subproblems and merge them into a solution to the original problem.
+4. Base case: The problem cannot be broken down any further.
+5. Recursive case: The problem can be broken down into smaller subproblems.
+
+- Simplify complex problems
+- Efficiency
+- Parallelism
+
+## Analogy
+
+Imagine you're tasked with organizing a large library. Doing it all at once seems overwhelming. So, you apply a divide and conquer approach:
+
+**Divide:** You divide the entire library into sections (fiction, non-fiction, science, literature, etc.).
+
+**Conquer:** Each section is then organized independently. This task is simpler because each section is smaller and more manageable than the whole library.
+
+**Combine:** Once all sections are organized, the entire library is organized as a result of organizing these individual sections.
