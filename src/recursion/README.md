@@ -59,3 +59,25 @@ You've to determine what information is being carried across recursive calls.
 Use the identified data structure to store and retrieve the state information during each iteration of the loop.
 
 Ensure that each iteration correctly modifies the state to mirror what would happen in a recursive call.
+
+# From iteration to recursion
+
+**Identify Loop and State Variables:**
+
+Find the loop (e.g., for, while) in the iterative function.
+Identify the variables that represent the state and how they change with each iteration.
+
+**Define Base Case:**
+
+Determine the condition that ends the loop. This will often become your base case in the recursive version.
+The base case is where the recursion will stop.
+
+**Recursive Function Structure:**
+
+Create a function that makes a recursive call with an updated state, mirroring the iteration step.
+Ensure that with each recursive call, you move closer to the base case.
+
+**Replicate Loop Logic:**
+
+The body of the loop often becomes the body of the recursive function.
+The recursive call should reflect the iteration logic.
