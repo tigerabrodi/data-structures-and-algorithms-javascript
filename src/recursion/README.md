@@ -81,3 +81,25 @@ Ensure that with each recursive call, you move closer to the base case.
 
 The body of the loop often becomes the body of the recursive function.
 The recursive call should reflect the iteration logic.
+
+# Memoization
+
+Memoization is an optimization technique used primarily in recursive algorithms to improve performance by storing the results of expensive function calls and returning the cached result when the same inputs occur again.
+
+## How to spot opportunities for memoization
+
+**Overlapping Subproblems:** If your recursive algorithm computes the same values multiple times, memoization can be beneficial. This is common in dynamic programming problems, such as calculating Fibonacci numbers, binomial coefficients, or the shortest path in a graph.
+
+**Top-Down Approach:** Memoization is often used in a top-down approach, where you start solving the problem from the original problem state and break it down into smaller subproblems.
+
+**Deterministic Functions:** The function should be deterministic, meaning it should return the same output given the same input.
+
+## Implementing memoization
+
+**Create a Cache:** Use a data structure (like an object or array) to store the results of function calls. The inputs to the function serve as keys, and the computed results are the values.
+
+**Check the Cache:** At the beginning of the function, check if the result for the current inputs is already in the cache. If it is, return the cached result instead of recomputing it.
+
+**Store Results:** After computing the result for a set of inputs, store this result in the cache before returning it.
+
+**Pass the Cache in Recursive Calls:** Ensure that the cache is accessible in each recursive call, either by passing it as an argument or using a closure.

@@ -15,7 +15,7 @@ export function waysToClimbStairs(target, possibleSteps) {
 export function waysToClimbStairsWithMemoization(
   target,
   possibleSteps,
-  memoization
+  memoization = {}
 ) {
   if (target === 0) return 1
 
