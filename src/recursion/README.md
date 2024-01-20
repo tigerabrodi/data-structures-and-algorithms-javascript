@@ -129,3 +129,33 @@ Imagine you're tasked with organizing a large library. Doing it all at once seem
 **Conquer:** Each section is then organized independently. This task is simpler because each section is smaller and more manageable than the whole library.
 
 **Combine:** Once all sections are organized, the entire library is organized as a result of organizing these individual sections.
+
+# Sum of digits
+
+```js
+export const sumOfDigits = (num) => {
+  const isSingleNumber = num <= 9
+  if (isSingleNumber) {
+    return num
+  }
+
+  const lastNumber = num % 10
+  const newNumber = Math.floor(num / 10)
+
+  return lastNumber + sumOfDigits(newNumber)
+}
+```
+
+I got the idea, but not the calculation.
+
+How it works: % 10 gets the last number. Math.floor(num / 10) gets the rest of the number.
+
+It makes sense in hindsight.
+
+Example: Math.floor(1234 / 10) equals 123.
+
+Why? Because 1234 / 10 equals 123.4, and Math.floor() rounds this down to 123.
+
+Example: 1234 % 10 equals 4.
+
+Why? Because when you divide 1234 by 10, the quotient is 123 and the remainder is 4.
