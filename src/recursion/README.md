@@ -159,3 +159,32 @@ Why? Because 1234 / 10 equals 123.4, and Math.floor() rounds this down to 123.
 Example: 1234 % 10 equals 4.
 
 Why? Because when you divide 1234 by 10, the quotient is 123 and the remainder is 4.
+
+# Count Occurrences
+
+```js
+export const countOccurrences = (
+  arrOfNums,
+  num,
+  totalCount = 0,
+  currentIndex = 0
+) => {
+  if (currentIndex === arrOfNums.length) {
+    return totalCount
+  }
+
+  if (arrOfNums[currentIndex] === num) {
+    totalCount++
+  }
+
+  return countOccurrences(arrOfNums, num, totalCount, currentIndex + 1)
+}
+```
+
+Here we're using `totalCount` and `currentIndex` to keep track of the state.
+
+`totalCount` serves as the accumulator, and `currentIndex` serves as the index.
+
+Accumulators are used to store the result of a function call. In this case, we're storing the number of times the number appears in the array.
+
+If index is equal to the length of the array, we're at the end, so we return the accumulator.
