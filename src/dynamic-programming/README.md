@@ -41,3 +41,44 @@ Familiar Patterns: Many DP problems follow certain patterns like Knapsack, Longe
 
 6. **Is the problem an optimization problem?**
    - Does the problem ask for a minimum, maximum, or best result (such as shortest path, largest sum, longest sequence)?
+
+# Questions to break down a DP problem
+
+1. **What is the Base Case?**
+
+   - What is the simplest instance of the problem, and what is its solution? This forms the starting point of your solution.
+
+2. **What are the Subproblems?**
+
+   - What smaller, simpler problems does the original problem consist of? How does solving these lead to a solution for the overall problem?
+
+3. **How do Subproblems Overlap?**
+
+   - Identify specific instances where the same subproblem is solved multiple times. This overlap is where DP provides efficiency.
+
+4. **What is the Recurrence Relation?**
+
+   - How can you express the solution to a problem in terms of the solutions to its subproblems? This relation is often the key insight for the DP solution.
+
+5. **How to Store Solutions to Subproblems?**
+
+   - Will you use memoization (top-down with recursion) or tabulation (bottom-up with iteration)? Decide on the data structure (array, matrix, hashmap) to store these solutions.
+
+6. **What is the Order of Solving Subproblems?**
+
+   - Especially for tabulation, what order should you follow to ensure that the solution to a subproblem is computed before it’s needed?
+
+7. **How to Construct the Solution to the Original Problem?**
+
+   - Once subproblems are solved, how do you combine their solutions to get the solution to the original problem?
+
+8. **Are there Initialization Conditions?**
+
+   - For tabulation, how do you initialize the table? What values do you put in the table before starting to solve subproblems?
+
+9. **Can Subproblems be Simplified?**
+
+   - Are there redundancies or unnecessary parts in your subproblems that can be streamlined?
+
+10. **Is there a Scope for Optimization?**
+    - Can the space or time complexity be further optimized? For example, can you reduce the dimensions of the DP table?
