@@ -16,3 +16,28 @@ Familiar Patterns: Many DP problems follow certain patterns like Knapsack, Longe
 - The optimal solution to the problem can be constructed from the optimal solutions of its subproblems.
 - The solutions to subproblems can be stored and reused.
 - The problem involves making choices at each step that could affect the overall solution.
+
+# Questions to ask yourself to identify a DP problem
+
+1. **Are there overlapping subproblems?**
+
+   - Does solving the problem involve solving the same smaller problems multiple times?
+
+2. **Is there an optimal substructure?**
+
+   - Can a solution to the whole problem be constructed from the solutions of its subproblems?
+
+3. **Can the problem be broken down into smaller, simpler subproblems?**
+
+   - Is it possible to divide the problem into smaller parts that are easier to solve?
+
+4. **Is memoization or tabulation applicable?**
+
+   - Can the results of subproblems be stored and efficiently retrieved to avoid redundant calculations?
+
+5. **Are there multiple ways to reach a solution?**
+
+   - Does the problem involve making a series of choices at each step to reach an overall optimal solution?
+
+6. **Is the problem an optimization problem?**
+   - Does the problem ask for a minimum, maximum, or best result (such as shortest path, largest sum, longest sequence)?
