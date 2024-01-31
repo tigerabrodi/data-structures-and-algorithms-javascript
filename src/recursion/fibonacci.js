@@ -17,9 +17,15 @@
 // 12. fibonacci(3) = 1 + 1 = 2
 // 13. fibonacci(4) = 2 + 1 = 3
 export function fibonacci(n) {
+  // Base case: if n is less than 2, it can only be 0 or 1
+  // In the Fibonacci sequence, the first two numbers are 0 and 1
+  // So, we return n itself
   if (n < 2) {
     return n
   }
 
+  // Recursive case: if n is not less than 2, we calculate the Fibonacci number
+  // by adding the two preceding Fibonacci numbers
+  // This is done by calling the fibonacci function recursively with n - 1 and n - 2
   return fibonacci(n - 1) + fibonacci(n - 2)
 }
