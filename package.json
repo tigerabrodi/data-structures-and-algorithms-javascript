@@ -12,5 +12,8 @@
   "devDependencies": {
     "nodemon": "^3.0.2",
     "vitest": "^1.1.1"
+  },
+  "dependencies": {
+    "@datastructures-js/priority-queue": "^6.3.1"
   }
 }
