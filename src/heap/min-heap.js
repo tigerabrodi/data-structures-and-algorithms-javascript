@@ -65,10 +65,12 @@ export class MinHeap {
       const leftChildValue = this.heap[leftChildIndex]
       const rightChildValue = this.heap[rightChildIndex]
 
-      const isCurrentLessThanBothChildren =
+      // Current having less priority than both children,
+      // in min heap this means that the current node is greater than both children
+      const isCurrentLessPriorityThanBothChildren =
         leftChildValue < currentValue && rightChildValue < currentValue
 
-      if (isCurrentLessThanBothChildren) {
+      if (isCurrentLessPriorityThanBothChildren) {
         if (leftChildValue < rightChildValue) {
           this.#swap(leftChildIndex, indexToBubbleDown)
           indexToBubbleDown = leftChildIndex
