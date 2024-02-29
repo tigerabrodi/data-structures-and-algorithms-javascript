@@ -14,22 +14,22 @@
 //   return cache[n]
 // }
 
-// /**
-//  * @param {number} n
-//  * @return {number}
-//  */
-// var fib = function(n) {
-//     if (n < 2) return n
+/**
+ * @param {number} n
+ * @return {number}
+ */
+var fib = function (n) {
+  if (n < 2) return n
 
-//     let arr = [0, 1]
-//     let i = 2
+  let arr = [0, 1]
+  let i = 2
 
-//     while (i <= n) {
-//         let temp = arr[1]
-//         arr[1] = arr[0] + arr[1]
-//         arr[0] = temp
-//         i++
-//     }
+  while (i <= n) {
+    let temp = arr[1]
+    arr[1] = arr[0] + arr[1]
+    arr[0] = temp
+    i++
+  }
 
-//     return arr[1]
-// };
+  return arr[1]
+}
