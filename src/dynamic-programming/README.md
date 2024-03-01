@@ -82,3 +82,55 @@ Familiar Patterns: Many DP problems follow certain patterns like Knapsack, Longe
 
 10. **Is there a Scope for Optimization?**
     - Can the space or time complexity be further optimized? For example, can you reduce the dimensions of the DP table?
+
+# 2 Dimensional DP
+
+## Brute Force
+
+```js
+// Brute Force - Time: O(2 ^ (n + m)), Space: O(n + m)
+function bruteForce(r, c, rows, cols) {
+  if (r == rows || c == cols) {
+    return 0
+  }
+
+  if (r == rows - 1 && c == cols - 1) {
+    return 1
+  }
+
+  const down = bruteForce(r + 1, c, rows, cols)
+  const right = bruteForce(r, c + 1, rows, cols)
+
+  return down + right
+}
+
+bruteForce(0, 0, 4, 4) // 6
+```
+
+To visualize how this is working, let's draw a tree of the recursive calls:
+
+```
+                (0, 0)
+              /       \
+          (1, 0)     (0, 1)
+          /   \       /   \
+      (2, 0) (1, 1) (1, 1) (0, 2)
+      /   \   /   \ /   \   /   \
+    (3, 0) (2, 1) (2, 1) (1, 2) (2, 1) (1, 2) (1, 2) (0, 3)
+    /   \   /   \ /   \   /   \ /   \ /   \ /   \ /   \
+  (4, 0) (3, 1) (3, 1) (2, 2) (3, 1) (2, 2) (2, 2) (1, 3) (3, 1) (2, 2) (2, 2) (1, 3) (2, 2) (1, 3) (1, 3) (0, 4)
+```
+
+To take it a bit slower:
+
+```
+[0, 0, 0, 0]
+[0, 0, 0, 0]
+[0, 0, 0, 0]
+[0, 0, 0, 0]
+```
+
+We start at (0, 0). The first call goes down and is recursive:
+
+1. (1, 0) -> (2, 0) -> (3, 0) -> (4, 0) this is out of bounds, so we return 0. `down` is 0.
+2. We go back to (3, 0) -> (3, 1) -> (4, 1) out of bounds, so we return 0. `right` is 0.
