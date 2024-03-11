@@ -34,3 +34,29 @@ var pairSum = function (head) {
 
   return res
 }
+
+var pairSum = function (head) {
+  let prev = null
+
+  let slow = head
+  let fast = head
+
+  while (fast && fast.next) {
+    fast = fast.next.next
+
+    let tmp = slow.next
+    slow.next = prev
+    prev = slow
+    slow = tmp
+  }
+
+  let res = 0
+
+  while (slow) {
+    res = Math.max(slow.val + prev.val)
+    slow = slow.next
+    prev = prev.next
+  }
+
+  return res
+}
