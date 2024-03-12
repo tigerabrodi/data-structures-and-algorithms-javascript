@@ -16,16 +16,13 @@ var combinationSum = function (candidates, target) {
       return
     }
 
-    const currentNumber = candidates[i]
+    cur.push(candidates[i])
+    dfs(i, cur, totalSum + candidates[i])
 
-    cur.push(currentNumber)
-    dfs(i, cur, currentNumber + totalSum)
-
-    cur.pop(currentNumber)
+    cur.pop()
     dfs(i + 1, cur, totalSum)
   }
 
   dfs(0, [], 0)
-
   return res
 }
